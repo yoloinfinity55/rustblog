@@ -8,27 +8,27 @@
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 <body class="min-h-screen flex flex-col font-sans bg-bg text-text">
-  <header class="border-b border-gray-200 dark:border-gray-700 sticky top-0">
+  <header class="border-b border-gray-200 sticky top-0">
     <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
       <a href="https://yoloinfinity55.github.io/rustblog" class="text-2xl font-semibold">RustBlog</a>
       <div class="hidden md:flex items-center space-x-8">
         <a href="https://yoloinfinity55.github.io/rustblog" class="hover:text-accent transition-colors">Home</a>
         <a href="https://yoloinfinity55.github.io/rustblog/blog" class="hover:text-accent transition-colors">Blog</a>
         <a href="https://yoloinfinity55.github.io/rustblog/tags" class="hover:text-accent transition-colors">Tags</a>
-        <button @click="theme = (theme === 'light' ? 'dark' : 'light')" class="text-text dark:text-darkText hover:text-accent transition-colors">
+        <button @click="theme = (theme === 'light' ? 'dark' : 'light')" class="text-text hover:text-accent transition-colors">
           <span x-show="theme === 'light'">🌙</span>
           <span x-show="theme === 'dark'">☀️</span>
         </button>
       </div>
       <div class="md:hidden">
-        <button @click="menuOpen = !menuOpen" class="text-text dark:text-darkText hover:text-accent">
+        <button @click="menuOpen = !menuOpen" class="text-text hover:text-accent">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path :d="menuOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16m-7 6h7'" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
           </svg>
         </button>
       </div>
     </nav>
-    <div x-show="menuOpen" class="md:hidden border-t border-gray-200 dark:border-gray-700 px-6 py-4">
+    <div x-show="menuOpen" class="md:hidden border-t border-gray-200 px-6 py-4">
       <a href="https://yoloinfinity55.github.io/rustblog" class="block py-2 hover:text-accent transition-colors">Home</a>
       <a href="https://yoloinfinity55.github.io/rustblog/blog" class="block py-2 hover:text-accent transition-colors">Blog</a>
       <a href="https://yoloinfinity55.github.io/rustblog/tags" class="block py-2 hover:text-accent transition-colors">Tags</a>
@@ -90,7 +90,7 @@
   </ul>
 
   </main>
-  <footer class="border-t border-gray-200 dark:border-gray-700 text-center py-6 text-sm text-gray-500 dark:text-gray-400">
+  <footer class="border-t border-gray-200 text-center py-6 text-sm text-gray-500">
     <p>&copy; 2025 RustBlog</p>
   </footer>
 </body>
