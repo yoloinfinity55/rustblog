@@ -1,10 +1,26 @@
 {% extends "base.html" %}
-{% block title %}{{ config.title }}{% endblock %}
+
 {% block content %}
-  <section class="py-16 text-center">
-    <h1 class="text-3xl md:text-4xl font-semibold mb-6">{{ config.title }}</h1>
-    <div class="prose max-w-3xl mx-auto">
-      {{ section.content | safe }}
+<h1 class="text-3xl font-bold mb-8">Latest Posts</h1>
+
+{% set blog_section = get_section(path="blog/_index.md") %}
+{% set posts = blog_section.pages %}
+
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+  {% for post in posts %}
+  <a href="{{ post.permalink }}" class="block bg-gray-100 dark:bg-gray-800 rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-200">
+    <div class="p-6">
+      <h2 class="text-xl font-semibold mb-2 text-text dark:text-text">{{ post.title }}</h2>
+      {% if post.description %}
+        <p class="text-gray-700 dark:text-gray-300">{{ post.description }}</p>
+      {% else %}
+        <p class="text-gray-700 dark:text-gray-300">{{ post.summary | safe }}</p>
+      {% endif %}
     </div>
-  </section>
+    <div class="px-6 pb-4">
+      <span class="text-sm text-gray-500 dark:text-gray-400">{{ post.date | date(format="%b %d, %Y") }}</span>
+    </div>
+  </a>
+  {% endfor %}
+</div>
 {% endblock %}

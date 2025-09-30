@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}{{ config.title }}{% endblock %}
+{% block content %}
+  <section class="py-16 text-center">
+    <h1 class="text-3xl md:text-4xl font-semibold mb-6">{{ config.title }}</h1>
+    <div class="prose max-w-3xl mx-auto">
+      {{ section.content | safe }}
+    </div>
+  </section>
+{% endblock %}
