@@ -39,7 +39,7 @@
 
       <!-- Mobile Hamburger -->
       <div class="md:hidden">
-        <button @click="menuOpen = !menuOpen" class="text-text hover:text-accent">
+        <button @click="menuOpen = !menuOpen" class="text-text hover:text-accent" title="Toggle menu" aria-label="Toggle menu">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path :d="menuOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16m-7 6h7'" 
               stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
