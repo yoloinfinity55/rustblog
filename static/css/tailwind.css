@@ -1,4 +1,21 @@
 @tailwind base;
 @tailwind components;
 
+:root {
+  --color-bg: #F7F7F7;
+  --color-text: #1F2A44;
+  --color-accent: #1E40AF;
+  --color-gray-100: #f3f4f6;
+  --color-gray-700: #374151;
+  --color-gray-200: #e5e7eb;
+}
+
+[data-theme='dark'] {
+  --color-bg: #1F2A44;
+  --color-text: #E5E7EB;
+  --color-gray-100: #374151;
+  --color-gray-700: #f3f4f6;
+  --color-gray-200: #374151;
+}
+
 @tailwind utilities;
