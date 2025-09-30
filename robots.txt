@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 Allow: /
-Sitemap: http://localhost:1111/sitemap.xml
+Sitemap: https://yoloinfinity55.github.io/rustblog/sitemap.xml

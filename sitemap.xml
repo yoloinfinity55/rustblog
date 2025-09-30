@@ -1,37 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>http://localhost:1111/</loc>
+        <loc>https://yoloinfinity55.github.io/rustblog/</loc>
     </url>
     <url>
-        <loc>http://localhost:1111/blog/</loc>
+        <loc>https://yoloinfinity55.github.io/rustblog/blog/</loc>
     </url>
     <url>
-        <loc>http://localhost:1111/blog/first-post/</loc>
+        <loc>https://yoloinfinity55.github.io/rustblog/blog/first-post/</loc>
         <lastmod>2025-09-30</lastmod>
     </url>
     <url>
-        <loc>http://localhost:1111/categories/</loc>
+        <loc>https://yoloinfinity55.github.io/rustblog/categories/</loc>
     </url>
     <url>
-        <loc>http://localhost:1111/categories/blog/</loc>
+        <loc>https://yoloinfinity55.github.io/rustblog/categories/blog/</loc>
     </url>
     <url>
-        <loc>http://localhost:1111/categories/blog/page/1/</loc>
+        <loc>https://yoloinfinity55.github.io/rustblog/categories/blog/page/1/</loc>
     </url>
     <url>
-        <loc>http://localhost:1111/tags/</loc>
+        <loc>https://yoloinfinity55.github.io/rustblog/tags/</loc>
     </url>
     <url>
-        <loc>http://localhost:1111/tags/rust/</loc>
+        <loc>https://yoloinfinity55.github.io/rustblog/tags/rust/</loc>
     </url>
     <url>
-        <loc>http://localhost:1111/tags/rust/page/1/</loc>
+        <loc>https://yoloinfinity55.github.io/rustblog/tags/rust/page/1/</loc>
     </url>
     <url>
-        <loc>http://localhost:1111/tags/tech/</loc>
+        <loc>https://yoloinfinity55.github.io/rustblog/tags/tech/</loc>
     </url>
     <url>
-        <loc>http://localhost:1111/tags/tech/page/1/</loc>
+        <loc>https://yoloinfinity55.github.io/rustblog/tags/tech/page/1/</loc>
     </url>
 </urlset>
