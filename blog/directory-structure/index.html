@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en" x-data="{ theme: 'light', menuOpen: false }" x-init="
+    theme = localStorage.getItem('theme') 
+        || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    $watch('theme', val => { 
+        localStorage.setItem('theme', val); 
+        $el.setAttribute('data-theme', val); 
+    });
+    $el.setAttribute('data-theme', theme);
+" class="bg-bg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A minimalist blog with Zola and Tailwind CSS">
+  <title>RustBlog | Directory Structure</title>
+  <link rel="stylesheet" href="https://yoloinfinity55.github.io/rustblog/css/output.css">
+  <link rel="stylesheet" href="https://yoloinfinity55.github.io/rustblog/css/theme.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+
+<body class="min-h-screen flex flex-col font-sans text-text">
+  <!-- Header -->
+  <header class="border-b border-gray-200 sticky top-0 bg-gray-100 dark:bg-gray-900 z-50">
+    <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="https://yoloinfinity55.github.io/rustblog" class="text-2xl font-semibold">RustBlog</a>
+      
+      <!-- Desktop Menu -->
+      <div class="hidden md:flex items-center space-x-8">
+        <a href="https://yoloinfinity55.github.io/rustblog" class="hover:text-accent transition-colors">Home</a>
+        <a href="https://yoloinfinity55.github.io/rustblog/blog" class="hover:text-accent transition-colors">Blog</a>
+        <a href="https://yoloinfinity55.github.io/rustblog/tags" class="hover:text-accent transition-colors">Tags</a>
+        <button title="Toggle theme" aria-label="Toggle theme" 
+          @click="theme = (theme === 'light' ? 'dark' : 'light')" 
+          class="text-text hover:text-accent transition-colors">
+          <span x-show="theme === 'light'">🌙</span>
+          <span x-show="theme === 'dark'">☀️</span>
+        </button>
+      </div>
+
+      <!-- Mobile Hamburger -->
+      <div class="md:hidden">
+        <button @click="menuOpen = !menuOpen" class="text-text hover:text-accent">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path :d="menuOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16m-7 6h7'" 
+              stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+          </svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div x-show="menuOpen" class="md:hidden border-t border-gray-200 dark:border-gray-700 px-6 py-4 space-y-2">
+      <a href="https://yoloinfinity55.github.io/rustblog" 
+         @click="menuOpen = false" 
+         class="block py-2 hover:text-accent transition-colors">Home</a>
+      <a href="https://yoloinfinity55.github.io/rustblog/blog" 
+         @click="menuOpen = false" 
+         class="block py-2 hover:text-accent transition-colors">Blog</a>
+      <a href="https://yoloinfinity55.github.io/rustblog/tags" 
+         @click="menuOpen = false" 
+         class="block py-2 hover:text-accent transition-colors">Tags</a>
+      <button title="Toggle theme" aria-label="Toggle theme" 
+        @click="theme = (theme === 'light' ? 'dark' : 'light'); menuOpen = false" 
+        class="block py-2 hover:text-accent transition-colors">
+        <span x-text="theme === 'light' ? '☀️ Light Mode' : '🌙 Dark Mode'"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container mx-auto px-6 py-12 flex-grow">
+    <div class="bg-gray-100 dark:bg-gray-800 rounded-xl shadow-md p-8">
+      
+  <article class="prose max-w-3xl mx-auto">
+    <h1 class="text-2xl md:text-3xl font-semibold text-text mb-4">Directory Structure</h1>
+    <p class="text-sm text-gray-500 mb-6">September 30, 2025</p>
+    <p>let's break down the directory structure of your Zola and Tailwind CSS project. Think of it like organizing files
+on your computer, but for a website. Each folder has a specific job.</p>
+<p>Here's an explanation of the key directories:</p>
+<ul>
+<li>
+<p><code>.git/</code>:</p>
+<ul>
+<li>Purpose: This is where Git, your version control system, stores all the history of your project. It tracks every
+change you make, allowing you to revert to previous versions or collaborate with others.</li>
+<li>Contents: Hidden files and folders that Git uses internally. You generally don't interact with this directly.</li>
+<li>Beginner Explanation: It's like a magic undo button and a way to save different versions of your work.</li>
+</ul>
+</li>
+<li>
+<p><code>.github/</code>:</p>
+<ul>
+<li>Purpose: This folder is used by GitHub for special features, primarily GitHub Actions.</li>
+<li>Contents:
+<ul>
+<li>workflows/: Contains YAML files (like deploy.yml) that define automated tasks, such as building and deploying
+your website to GitHub Pages whenever you push changes.</li>
+</ul>
+</li>
+<li>Beginner Explanation: This is where you set up automatic tasks for your project on GitHub, like making sure your
+website is always updated when you save new changes.</li>
+</ul>
+</li>
+<li>
+<p><code>config.toml</code>:</p>
+<ul>
+<li>Purpose: This is the main configuration file for Zola, your static site generator.</li>
+<li>Contents: Global settings for your blog, such as its title, description, base URL, language, and how it handles
+taxonomies (tags and categories) and Markdown.</li>
+<li>Beginner Explanation: This is the "master settings" file for your entire blog. It tells Zola how your website
+should generally behave and what its name is.</li>
+</ul>
+</li>
+<li>
+<p><code>content/</code>:</p>
+<ul>
+<li>Purpose: This is where all your actual website content (blog posts, pages, etc.) lives. Zola reads Markdown files
+from here to generate your HTML pages.</li>
+<li>Contents:
+<ul>
+<li>_index.md: Special files that define sections (like your homepage or blog listing page).</li>
+<li>blog/: A subdirectory for your blog posts.
+<ul>
+<li>_index.md: Defines the main blog listing page.</li>
+<li>first-post.md, second-post.md, etc.: Your individual blog posts, written in Markdown.</li>
+</ul>
+</li>
+<li>categories/, tags/: These folders contain _index.md files that Zola uses to generate pages for your categories
+and tags.</li>
+</ul>
+</li>
+<li>Beginner Explanation: This is where you write all the text and images for your website. Each Markdown file here
+becomes a page or a blog post on your site.</li>
+</ul>
+</li>
+<li>
+<p><code>docs/</code>:</p>
+<ul>
+<li>Purpose: A general-purpose folder for documentation related to your project.</li>
+<li>Contents: specification.md (and potentially other documentation files).</li>
+<li>Beginner Explanation: This is where you keep notes or detailed instructions about your project.</li>
+</ul>
+</li>
+<li>
+<p><code>node_modules/</code>:</p>
+<ul>
+<li>Purpose: This folder stores all the third-party JavaScript libraries and tools that your project needs, especially
+for Tailwind CSS.</li>
+<li>Contents: Thousands of small files and folders for packages like tailwindcss, postcss, autoprefixer, etc.</li>
+<li>Beginner Explanation: This is like a toolbox that holds all the extra software your project needs to build its
+styles and other features. You usually don't touch files in here directly.</li>
+</ul>
+</li>
+<li>
+<p><code>package.json</code> / <code>package-lock.json</code>:</p>
+<ul>
+<li>Purpose: These files manage your JavaScript project's dependencies and scripts.</li>
+<li>Contents:
+<ul>
+<li>package.json: Lists the names and versions of the tools your project uses (like Tailwind CSS) and defines
+custom commands (e.g., npm run build:css).</li>
+<li>package-lock.json: Automatically generated file that locks down the exact versions of all dependencies,
+ensuring consistent builds across different environments.</li>
+</ul>
+</li>
+<li>Beginner Explanation: These files keep track of all the "ingredients" (software tools) your project needs and how
+to run special commands, like building your website's styles.</li>
+</ul>
+</li>
+<li>
+<p><code>postcss.config.js</code>:</p>
+<ul>
+<li>Purpose: Configuration file for PostCSS, a tool that transforms CSS. Tailwind CSS uses PostCSS.</li>
+<li>Contents: Tells PostCSS to include Tailwind CSS and Autoprefixer plugins.</li>
+<li>Beginner Explanation: This file helps Tailwind CSS work its magic by telling another tool (PostCSS) how to process
+your website's styles.</li>
+</ul>
+</li>
+<li>
+<p><code>static/</code>:</p>
+<ul>
+<li>Purpose: This folder holds all your static assets – files that Zola copies directly to your final website without
+processing them (except for CSS, which Tailwind processes).</li>
+<li>Contents:
+<ul>
+<li>css/: Your CSS files.
+<ul>
+<li>tailwind.css: The input file for Tailwind CSS, where you include Tailwind's directives.</li>
+<li>theme.css: An empty file, likely a placeholder for custom CSS if needed.</li>
+<li>output.css (generated): The final, processed CSS file that Tailwind CSS creates, containing all your
+website's styles.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Beginner Explanation: This is where you put things like images, fonts, or your main CSS files that don't need Zola
+to change them much.</li>
+</ul>
+</li>
+<li>
+<p><code>tailwind.config.js</code>:</p>
+<ul>
+<li>Purpose: This is the main configuration file for Tailwind CSS.</li>
+<li>Contents: Customizes Tailwind's default settings, defines your color palette, fonts, and tells Tailwind which
+files to scan for utility classes. It also configures the @tailwindcss/typography plugin for styling Markdown
+content.</li>
+<li>Beginner Explanation: This is where you tell Tailwind CSS exactly how you want your website to look – what colors
+to use, what fonts, and how to style your blog posts.</li>
+</ul>
+</li>
+<li>
+<p><code>templates/</code>:</p>
+<ul>
+<li>Purpose: This folder contains all your HTML templates, which Zola uses to structure your website's pages.</li>
+<li>Contents:
+<ul>
+<li>base.html: The main layout template that all other templates extend. It contains the header, navigation,
+footer, and Alpine.js for interactivity.</li>
+<li>index.html: The template for your homepage.</li>
+<li>blog.html: The template for your blog post listing page.</li>
+<li>page.html: The template for individual content pages (like blog posts).</li>
+<li>taxonomies.html, taxonomy.html: Templates for displaying lists of tags/categories and pages within a specific
+tag/category.</li>
+</ul>
+</li>
+<li>Beginner Explanation: These are the "skeletons" or blueprints for your website's pages. They define where the
+content goes, where the navigation bar is, and how everything is laid out.</li>
+</ul>
+</li>
+</ul>
+<p>This structure helps keep your project organized and makes it easier to manage content, styling, and deployment
+separately.</p>
+
+    
+      <div class="mt-8 text-sm">
+        <span class="text-gray-500">Tags:</span>
+        
+          <a href="/tags/Zola" class="text-accent hover:underline">Zola</a>, 
+        
+          <a href="/tags/Tailwind CSS" class="text-accent hover:underline">Tailwind CSS</a>
+        
+      </div>
+    
+  </article>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-gray-200 dark:border-gray-700 text-center py-6 text-sm text-gray-500 dark:text-gray-300 bg-gray-100 dark:bg-gray-900">
+    <p>&copy; 2025 RustBlog</p>
+  </footer>
+</body>
+</html>

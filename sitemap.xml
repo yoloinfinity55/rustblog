@@ -7,6 +7,14 @@
         <loc>https://yoloinfinity55.github.io/rustblog/blog/</loc>
     </url>
     <url>
+        <loc>https://yoloinfinity55.github.io/rustblog/blog/analysis/</loc>
+        <lastmod>2025-09-30</lastmod>
+    </url>
+    <url>
+        <loc>https://yoloinfinity55.github.io/rustblog/blog/directory-structure/</loc>
+        <lastmod>2025-09-30</lastmod>
+    </url>
+    <url>
         <loc>https://yoloinfinity55.github.io/rustblog/blog/first-post/</loc>
         <lastmod>2025-09-30</lastmod>
     </url>
@@ -87,6 +95,12 @@
         <loc>https://yoloinfinity55.github.io/rustblog/tags/specification/page/1/</loc>
     </url>
     <url>
+        <loc>https://yoloinfinity55.github.io/rustblog/tags/tailwind-css/</loc>
+    </url>
+    <url>
+        <loc>https://yoloinfinity55.github.io/rustblog/tags/tailwind-css/page/1/</loc>
+    </url>
+    <url>
         <loc>https://yoloinfinity55.github.io/rustblog/tags/tech/</loc>
     </url>
     <url>
@@ -109,5 +123,11 @@
     </url>
     <url>
         <loc>https://yoloinfinity55.github.io/rustblog/tags/updates/page/1/</loc>
+    </url>
+    <url>
+        <loc>https://yoloinfinity55.github.io/rustblog/tags/zola/</loc>
+    </url>
+    <url>
+        <loc>https://yoloinfinity55.github.io/rustblog/tags/zola/page/1/</loc>
     </url>
 </urlset>
