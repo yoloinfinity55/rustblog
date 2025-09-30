@@ -25,16 +25,6 @@ module.exports = {
             'p': { margin: '1.5rem 0' },
           },
         },
-        dark: {
-          css: {
-            color: theme('colors.text'),
-            'a': { color: theme('colors.accent') },
-            'a:hover': { color: theme('colors.accent'), 'text-decoration': 'underline' },
-            'h1, h2, h3, h4, h5, h6': { color: theme('colors.text') },
-            'code': { background: theme('colors.gray.700'), color: theme('colors.text') },
-            'pre': { background: theme('colors.gray.700'), color: theme('colors.text') },
-          },
-        },
       }),
       fontFamily: {
         sans: ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'sans-serif'],
