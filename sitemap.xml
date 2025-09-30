@@ -15,6 +15,10 @@
         <lastmod>2025-10-01</lastmod>
     </url>
     <url>
+        <loc>https://yoloinfinity55.github.io/rustblog/blog/third-post/</loc>
+        <lastmod>2025-10-02</lastmod>
+    </url>
+    <url>
         <loc>https://yoloinfinity55.github.io/rustblog/categories/</loc>
     </url>
     <url>
@@ -22,6 +26,12 @@
     </url>
     <url>
         <loc>https://yoloinfinity55.github.io/rustblog/categories/blog/page/1/</loc>
+    </url>
+    <url>
+        <loc>https://yoloinfinity55.github.io/rustblog/categories/reflections/</loc>
+    </url>
+    <url>
+        <loc>https://yoloinfinity55.github.io/rustblog/categories/reflections/page/1/</loc>
     </url>
     <url>
         <loc>https://yoloinfinity55.github.io/rustblog/categories/updates/</loc>
@@ -37,6 +47,12 @@
     </url>
     <url>
         <loc>https://yoloinfinity55.github.io/rustblog/tags/blogging/page/1/</loc>
+    </url>
+    <url>
+        <loc>https://yoloinfinity55.github.io/rustblog/tags/personal/</loc>
+    </url>
+    <url>
+        <loc>https://yoloinfinity55.github.io/rustblog/tags/personal/page/1/</loc>
     </url>
     <url>
         <loc>https://yoloinfinity55.github.io/rustblog/tags/rust/</loc>
@@ -55,5 +71,11 @@
     </url>
     <url>
         <loc>https://yoloinfinity55.github.io/rustblog/tags/test/page/1/</loc>
+    </url>
+    <url>
+        <loc>https://yoloinfinity55.github.io/rustblog/tags/thoughts/</loc>
+    </url>
+    <url>
+        <loc>https://yoloinfinity55.github.io/rustblog/tags/thoughts/page/1/</loc>
     </url>
 </urlset>
