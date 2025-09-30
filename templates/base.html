@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" class="light" x-data="{ darkMode: false }" x-init="if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) { document.documentElement.classList.add('dark'); darkMode = true; }">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ config.title }} | {% block title %}{% endblock %}</title>
+  <link rel="stylesheet" href="/css/output.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body class="bg-bg dark:bg-darkBg text-text dark:text-darkText min-h-screen flex flex-col font-sans">
+  <header class="border-b border-gray-200 dark:border-gray-700 sticky top-0">
+    <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="/" class="text-2xl font-semibold">{{ config.title }}</a>
+      <div class="hidden md:flex items-center space-x-8">
+        <a href="/" class="hover:text-accent transition-colors">Home</a>
+        <a href="/blog" class="hover:text-accent transition-colors">Blog</a>
+        <a href="/tags" class="hover:text-accent transition-colors">Tags</a>
+        <button @click="darkMode = !darkMode; localStorage.theme = darkMode ? 'dark' : 'light'; document.documentElement.classList.toggle('dark')" class="text-text dark:text-darkText hover:text-accent transition-colors">
+          <span x-show="!darkMode">🌙</span>
+          <span x-show="darkMode">☀️</span>
+        </button>
+      </div>
+      <div class="md:hidden">
+        <button @click="menuOpen = !menuOpen" class="text-text dark:text-darkText hover:text-accent">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path :d="menuOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16m-7 6h7'" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+          </svg>
+        </button>
+      </div>
+    </nav>
+    <div x-show="menuOpen" class="md:hidden border-t border-gray-200 dark:border-gray-700 px-6 py-4">
+      <a href="/" class="block py-2 hover:text-accent transition-colors">Home</a>
+      <a href="/blog" class="block py-2 hover:text-accent transition-colors">Blog</a>
+      <a href="/tags" class="block py-2 hover:text-accent transition-colors">Tags</a>
+      <button @click="darkMode = !darkMode; localStorage.theme = darkMode ? 'dark' : 'light'; document.documentElement.classList.toggle('dark')" class="block py-2 hover:text-accent transition-colors">
+        <span x-text="darkMode ? '☀️ Light Mode' : '🌙 Dark Mode'"></span>
+      </button>
+    </div>
+  </header>
+  <main class="container mx-auto px-6 py-12 flex-grow">
+    {% block content %}{% endblock %}
+  </main>
+  <footer class="border-t border-gray-200 dark:border-gray-700 text-center py-6 text-sm text-gray-500 dark:text-gray-400">
+    <p>&copy; {{ now() | date(format="%Y") }} {{ config.title }}</p>
+  </footer>
+</body>
+</html>

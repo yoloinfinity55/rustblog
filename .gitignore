@@ -1,11 +1,3 @@
 node_modules/
-rustblog/public/
-rustblog/static/css/output.css
-
-.DS_Store
-*.log
-*.tmp
-*.swp
-.idea/
-.vscode/
-target/
+public/
+static/css/output.css

@@ -1,7 +1,7 @@
 {
   "scripts": {
-    "build:css": "tailwindcss -i rustblog/static/css/tailwind.css -o rustblog/static/css/output.css --minify",
-    "watch:css": "tailwindcss -i rustblog/static/css/tailwind.css -o rustblog/static/css/output.css --watch",
+    "build:css": "tailwindcss -i static/css/tailwind.css -o static/css/output.css --minify",
+    "watch:css": "tailwindcss -i static/css/tailwind.css -o static/css/output.css --watch",
     "build": "npm run build:css && zola build"
   },
   "devDependencies": {
