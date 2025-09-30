@@ -1,16 +1,17 @@
 {% extends "base.html" %}
 {% block title %}{{ page.title }}{% endblock %}
 {% block content %}
-  <article class="prose max-w-none">
-    <h1 class="text-3xl font-bold mb-4">{{ page.title }}</h1>
-    <p class="text-sm text-gray-600">{{ page.date | date(format="%B %d, %Y") }}</p>
+  <article class="prose dark:prose-invert max-w-none">
+    <h1 class="text-3xl md:text-4xl font-bold text-primary dark:text-secondary mb-4">{{ page.title }}</h1>
+    <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">{{ page.date | date(format="%B %d, %Y") }}</p>
     {{ page.content | safe }}
     {% if page.taxonomies.tags %}
-      <p><strong>Tags:</strong>
+      <div class="mt-6">
+        <strong class="text-gray-700 dark:text-gray-300">Tags:</strong>
         {% for tag in page.taxonomies.tags %}
-          <a href="/tags/{{ tag }}" class="text-primary hover:underline">{{ tag }}</a>{% if not loop.last %}, {% endif %}
+          <a href="/tags/{{ tag }}" class="inline-block bg-primary text-white dark:bg-secondary dark:text-gray-900 px-3 py-1 rounded-full text-sm mr-2 hover:bg-secondary dark:hover:bg-primary transition-colors">{{ tag }}</a>
         {% endfor %}
-      </p>
+      </div>
     {% endif %}
   </article>
 {% endblock %}

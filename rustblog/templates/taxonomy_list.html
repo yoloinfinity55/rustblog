@@ -1,10 +1,13 @@
 {% extends "base.html" %}
-{% block title %}{{ taxonomy.name | capitalize }}{% endblock %}
+{% block title %}Tags{% endblock %}
 {% block content %}
-  <h1 class="text-3xl font-bold mb-4">{{ taxonomy.name | capitalize }}</h1>
-  <ul class="space-y-2">
+  <h1 class="text-3xl md:text-4xl font-bold text-primary dark:text-secondary mb-8">Tags</h1>
+  <ul class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
     {% for term in terms %}
-      <li><a href="{{ term.permalink }}" class="text-primary hover:underline">{{ term.name }}</a> ({{ term.pages | length }})</li>
+      <li class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+        <a href="{{ term.permalink }}" class="text-lg text-primary dark:text-secondary hover:text-secondary dark:hover:text-primary transition-colors">{{ term.name | capitalize }}</a>
+        <span class="text-sm text-gray-600 dark:text-gray-400">({{ term.pages | length }})</span>
+      </li>
     {% endfor %}
   </ul>
 {% endblock %}
