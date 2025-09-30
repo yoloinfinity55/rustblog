@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirect Notice</title>
+    <style>
+        /* 
+         * Using sensible defaults for CSS variables as they were not defined.
+         * These can be customized as needed.
+         */
+        :root {
+            --text-color: #212529;
+            --background-color: #f8f9fa;
+            --border-color: #dee2e6;
+            --header-background: #e9ecef;
+            --link-color: #681da8;
+            --link-active-color: #ea4335;
+        }
+
+        body {
+            font-family: "Helvetica Neue", sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            margin: 0;
+        }
+
+        a:link,
+        a:visited {
+            color: var(--link-color);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        a:active {
+            color: var(--link-active-color);
+        }
+
+        .header-bar {
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            background: var(--header-background);
+            padding: 1em 0;
+        }
+
+        .container {
+            padding: 0 20px;
+        }
+        
+        .header-bar h1 {
+            font-size: 1.5em;
+            margin: 0;
+        }
+
+        .notice-content {
+            padding: 2em 20px;
+        }
+
+        .notice-content p {
+            margin: 0 0 1em;
+        }
+    </style>
+</head>
+<body>
+    <header class="header-bar">
+        <div class="container">
+            <h1>Redirect Notice</h1>
+        </div>
+    </header>
+
+    <main class="notice-content">
+        <div class="container">
+            <p>The previous page is sending you to an invalid URL.</p>
+            <p>If you do not want to visit that page, you can <a href="#" id="return-link">return to the previous page</a>.</p>
+        </div>
+    </main>
+
+    <script>
+        // Self-executing anonymous function to avoid polluting the global scope.
+        (function() {
+            const returnLink = document.getElementById('return-link');
+
+            if (returnLink) {
+                /**
+                 * Event handler to navigate back in the browser's history.
+                 * @param {Event} event - The click event object.
+                 */
+                function goBack(event) {
+                    event.preventDefault(); // Prevent the default link behavior (#).
+                    window.history.back();
+                }
+
+                /**
+                 * Event handler for tracking the click via a tracking pixel.
+                 */
+                function trackClick() {
+                    try {
+                        const referrer = document.referrer;
+                        const encode = window.encodeURIComponent || escape;
+                        
+                        const trackingParams = new URLSearchParams({
+                            sa: 'T',
+                            url: referrer ? encode(referrer) : '',
+                            oi: 'unauthorizedredirect',
+                            ct: 'originlink'
+                        });
+
+                        // Use a tracking pixel to send the data.
+                        const img = new Image();
+                        img.src = `/url?${trackingParams.toString()}`;
+
+                    } catch (e) {
+                        // Log error if tracking fails, but don't block user action.
+                        console.error('Tracking failed:', e);
+                    }
+                }
+
+                // Attach event listeners for modern browsers.
+                returnLink.addEventListener('click', goBack);
+                returnLink.addEventListener('mousedown', trackClick);
+            }
+        })();
+    </script>
+</body>
+</html>

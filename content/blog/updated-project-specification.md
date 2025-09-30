@@ -200,7 +200,6 @@ touch .gitignore postcss.config.js
   ```css
   @tailwind base;
   @tailwind components;
-
   @tailwind utilities;
   ```
 
@@ -243,9 +242,9 @@ touch .gitignore postcss.config.js
    # Welcome
    Sample post.
 
-   ```python
+   
    print("Hello, Zola!")
-   ```
+   
    ```
 
 4. **Second Sample Post (`content/blog/second-post.md`)**:
@@ -260,10 +259,10 @@ touch .gitignore postcss.config.js
    # Another Post
    This is my second test blog post. It's great to be blogging!
 
-   ```javascript
+   
    console.log("Hello from the second post!");
    ```
-   ```
+   
 
 5. **Third Sample Post (`content/blog/third-post.md`)**:
    ```markdown
@@ -277,16 +276,18 @@ touch .gitignore postcss.config.js
    # Third Time's the Charm
    This is my third blog post. Hopefully, this one deploys smoothly!
 
-   ```rust
+   
    fn main() {
        println!("Hello, third post!");
    }
-   ```
+   
    ```
 
 6. **Templates**:
    - **`templates/base.html`**:
-     <pre><code class="language-html">
+     <pre>
+     ```
+     <code class="language-html">
      &lt;!DOCTYPE html&gt;
      &lt;html lang="en" class="light" x-data="&lcub; darkMode: false, menuOpen: false &rcub;" x-init="if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) { document.documentElement.classList.add('dark'); darkMode = true; }"&gt;
      &lt;head&gt;
@@ -348,7 +349,9 @@ touch .gitignore postcss.config.js
          &lt;/div&gt;
        &lt;/section&gt;
      &lcub;% endblock %&rcub;
-     </code></pre>
+     </code>
+     ```
+     </pre>
 
    - **`templates/blog_index.html`**:
      <pre><code class="language-html">
