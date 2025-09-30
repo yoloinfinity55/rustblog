@@ -14,7 +14,7 @@
       <div class="hidden md:flex space-x-6 items-center">
         <a href="{{ get_url(path='@/_index.md') | safe }}" class="hover:text-secondary transition-colors">Home</a>
         <a href="{{ get_url(path='@/blog/_index.md') | safe }}" class="hover:text-secondary transition-colors">Blog</a>
-        <a href="{{ get_taxonomy_url(kind='tags') | safe }}" class="hover:text-secondary transition-colors">Tags</a>
+        <a href="{{ get_url(path='@/tags/_index.md') | safe }}" class="hover:text-secondary transition-colors">Tags</a>
         <button @click="darkMode = !darkMode; localStorage.theme = darkMode ? 'dark' : 'light'; document.documentElement.classList.toggle('dark')" class="btn btn-primary">
           <span x-text="darkMode ? 'Light Mode' : 'Dark Mode'"></span>
         </button>
@@ -30,7 +30,7 @@
     <div x-show="menuOpen" class="md:hidden bg-primary text-white p-4">
       <a href="{{ get_url(path='@/_index.md') | safe }}" class="block py-2 hover:text-secondary transition-colors">Home</a>
       <a href="{{ get_url(path='@/blog/_index.md') | safe }}" class="block py-2 hover:text-secondary transition-colors">Blog</a>
-      <a href="{{ get_taxonomy_url(kind='tags') | safe }}" class="block py-2 hover:text-secondary transition-colors">Tags</a>
+      <a href="{{ get_url(path='@/tags/_index.md') | safe }}" class="block py-2 hover:text-secondary transition-colors">Tags</a>
       <button @click="darkMode = !darkMode; localStorage.theme = darkMode ? 'dark' : 'light'; document.documentElement.classList.toggle('dark')" class="btn btn-primary mt-2">
         <span x-text="darkMode ? 'Light Mode' : 'Dark Mode'"></span>
       </button>

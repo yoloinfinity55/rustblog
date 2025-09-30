@@ -3,8 +3,8 @@ base_url = "https://yoloinfinity55.github.io/rustblog"
 description = "A blog with Zola and Tailwind CSS"
 default_language = "en"
 taxonomies = [
-    {name = "tags", feed = true},
-    {name = "categories", feed = true},
+    {name = "tags", feed = true, list_template = "tags.html"},
+    {name = "categories", feed = true, list_template = "categories.html"},
 ]
 [markdown]
 highlight_code = true

@@ -1,7 +1,7 @@
 {% extends "base.html" %}
-{% block title %}{{ taxonomy.name | capitalize }}{% endblock %}
+{% block title %}Tags{% endblock %}
 {% block content %}
-  <h1 class="text-3xl md:text-4xl font-bold text-primary dark:text-secondary mb-8">{{ taxonomy.name | capitalize }}</h1>
+  <h1 class="text-3xl md:text-4xl font-bold text-primary dark:text-secondary mb-8">Tags</h1>
   <ul class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
     {% for term in terms %}
       <li class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow">
