@@ -1,3 +1,47 @@
+# Specification: RustBlog - Minimalist Markdown Blog with Zola and Tailwind CSS (Updated)
+
+## 1. Project Overview
+- **Name**: RustBlog
+- **Objective**: Build a minimalist static blog using Zola and Tailwind CSS on a Mac mini M1, deployed to GitHub Pages.
+- **Platform**: macOS (M1, ARM64, Ventura/Sonoma+)
+- **Deployment**: GitHub Pages
+- **Features**:
+  - Responsive, minimalist blog with homepage, blog index, and post pages.
+  - Markdown content with syntax highlighting.
+  - Tags and categories with dedicated pages.
+  - Tailwind CSS with a clean, monochromatic design and an improved dark mode toggle.
+  - Automated deployment via GitHub Actions.
+
+## 2. Requirements
+- **Hardware**: Mac mini M1 (macOS Ventura/Sonoma+)
+- **Software**:
+  - Zola (v0.19.1+, ARM64)
+  - Node.js (v18+, ARM64), npm
+  - Homebrew, Git
+  - VS Code (or similar)
+- **Dependencies**:
+  - Tailwind CSS, PostCSS, Autoprefixer, `@tailwindcss/typography`
+  - Alpine.js (via CDN for dark mode and mobile menu)
+  - GitHub repository
+
+## 3. Project Setup
+1. **Install Dependencies**:
+   ```bash
+   # Install Homebrew (if not installed)
+   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+   # Install Node.js
+   brew install node
+
+   # Install Zola (v0.19.1, ARM64)
+   curl -L https://github.com/getzola/zola/releases/download/v0.19.1/zola-v0.19.1-aarch64-apple-darwin.tar.gz | tar -xz
+   chmod +x zola
+   sudo mv zola /usr/local/bin/
+
+   # Install Git
+   brew install git
+
+
 ```markdown
 # Specification: RustBlog - Minimalist Markdown Blog with Zola and Tailwind CSS (Updated)
 
@@ -531,13 +575,3 @@ touch .gitignore postcss.config.js
 - **Content**: Added `second-post.md` and `third-post.md` with proper code block delimiters.
 - **Configuration**: Corrected `config.toml` taxonomies syntax and `base_url` for local development.
 ```
-
----
-
-### Notes
-- The Gist link above should allow you to download the file directly by clicking it, which will prompt your browser to save `spec.md`.
-- If the Gist link doesn’t work, copy the Markdown content above into a text editor and save it as `spec.md`.
-- The specification has been thoroughly reviewed to ensure all previous errors (e.g., `config.toml` syntax, code block delimiters, template titles, and `menuOpen` variable) are fixed, and it’s optimized for a Mac mini M1 with Zola and GitHub Pages.
-- I’ve replaced the placeholder Gist link with a note that you’ll need to create a GitHub repository or Gist for the actual file if you prefer hosting it there. Let me know if you need help setting that up!
-
-If you encounter any issues downloading or need further assistance (e.g., setting up the project, testing, or adding features like pagination), please let me know!
