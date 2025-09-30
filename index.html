@@ -1,55 +1,150 @@
 <!DOCTYPE html>
-<html lang="en" x-data="{ theme: localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'), menuOpen: false }" x-init="$watch('theme', val => localStorage.setItem('theme', val)); $el.setAttribute('data-theme', theme)">
+<html lang="en" x-data="{ theme: 'light', menuOpen: false }" x-init="
+    theme = localStorage.getItem('theme') 
+        || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    $watch('theme', val => { 
+        localStorage.setItem('theme', val); 
+        $el.setAttribute('data-theme', val); 
+    });
+    $el.setAttribute('data-theme', theme);
+" class="bg-bg">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RustBlog | RustBlog</title>
+  <meta name="description" content="A minimalist blog with Zola and Tailwind CSS">
+  <title>RustBlog | </title>
   <link rel="stylesheet" href="https://yoloinfinity55.github.io/rustblog/css/output.css">
+  <link rel="stylesheet" href="https://yoloinfinity55.github.io/rustblog/css/theme.css">
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
-<body class="min-h-screen flex flex-col font-sans bg-bg text-text">
-  <header class="border-b border-gray-200 sticky top-0">
+
+<body class="min-h-screen flex flex-col font-sans text-text">
+  <!-- Header -->
+  <header class="border-b border-gray-200 sticky top-0 bg-gray-100 dark:bg-gray-900 z-50">
     <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
       <a href="https://yoloinfinity55.github.io/rustblog" class="text-2xl font-semibold">RustBlog</a>
+      
+      <!-- Desktop Menu -->
       <div class="hidden md:flex items-center space-x-8">
         <a href="https://yoloinfinity55.github.io/rustblog" class="hover:text-accent transition-colors">Home</a>
         <a href="https://yoloinfinity55.github.io/rustblog/blog" class="hover:text-accent transition-colors">Blog</a>
         <a href="https://yoloinfinity55.github.io/rustblog/tags" class="hover:text-accent transition-colors">Tags</a>
-        <button @click="theme = (theme === 'light' ? 'dark' : 'light')" class="text-text hover:text-accent transition-colors">
+        <button title="Toggle theme" aria-label="Toggle theme" 
+          @click="theme = (theme === 'light' ? 'dark' : 'light')" 
+          class="text-text hover:text-accent transition-colors">
           <span x-show="theme === 'light'">🌙</span>
           <span x-show="theme === 'dark'">☀️</span>
         </button>
       </div>
+
+      <!-- Mobile Hamburger -->
       <div class="md:hidden">
         <button @click="menuOpen = !menuOpen" class="text-text hover:text-accent">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path :d="menuOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16m-7 6h7'" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+            <path :d="menuOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16m-7 6h7'" 
+              stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
           </svg>
         </button>
       </div>
     </nav>
-    <div x-show="menuOpen" class="md:hidden border-t border-gray-200 px-6 py-4">
-      <a href="https://yoloinfinity55.github.io/rustblog" class="block py-2 hover:text-accent transition-colors">Home</a>
-      <a href="https://yoloinfinity55.github.io/rustblog/blog" class="block py-2 hover:text-accent transition-colors">Blog</a>
-      <a href="https://yoloinfinity55.github.io/rustblog/tags" class="block py-2 hover:text-accent transition-colors">Tags</a>
-      <button @click="theme = (theme === 'light' ? 'dark' : 'light')" class="block py-2 hover:text-accent transition-colors">
+
+    <!-- Mobile Menu -->
+    <div x-show="menuOpen" class="md:hidden border-t border-gray-200 dark:border-gray-700 px-6 py-4 space-y-2">
+      <a href="https://yoloinfinity55.github.io/rustblog" 
+         @click="menuOpen = false" 
+         class="block py-2 hover:text-accent transition-colors">Home</a>
+      <a href="https://yoloinfinity55.github.io/rustblog/blog" 
+         @click="menuOpen = false" 
+         class="block py-2 hover:text-accent transition-colors">Blog</a>
+      <a href="https://yoloinfinity55.github.io/rustblog/tags" 
+         @click="menuOpen = false" 
+         class="block py-2 hover:text-accent transition-colors">Tags</a>
+      <button title="Toggle theme" aria-label="Toggle theme" 
+        @click="theme = (theme === 'light' ? 'dark' : 'light'); menuOpen = false" 
+        class="block py-2 hover:text-accent transition-colors">
         <span x-text="theme === 'light' ? '☀️ Light Mode' : '🌙 Dark Mode'"></span>
       </button>
     </div>
   </header>
+
+  <!-- Main Content -->
   <main class="container mx-auto px-6 py-12 flex-grow">
-    
-  <section class="py-16 text-center">
-    <h1 class="text-3xl md:text-4xl font-semibold mb-6">RustBlog</h1>
-    <div class="prose max-w-3xl mx-auto">
-      <h1 id="welcome">Welcome</h1>
-<p>Check out the <a href="https://yoloinfinity55.github.io/rustblog/blog">blog</a>!</p>
+    <div class="bg-gray-100 dark:bg-gray-800 rounded-xl shadow-md p-8">
+      
+<h1 class="text-3xl font-bold mb-8">Latest Posts</h1>
+
+
+
+
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+  
+  <a href="https:&#x2F;&#x2F;yoloinfinity55.github.io&#x2F;rustblog&#x2F;blog&#x2F;spec&#x2F;" class="block bg-gray-100 dark:bg-gray-800 rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-200">
+    <div class="p-6">
+      <h2 class="text-xl font-semibold mb-2 text-text dark:text-text">Spec</h2>
+      
+        <p class="text-gray-700 dark:text-gray-300"></p>
+      
+    </div>
+    <div class="px-6 pb-4">
+      <span class="text-sm text-gray-500 dark:text-gray-400">Oct 03, 2025</span>
+    </div>
+  </a>
+  
+  <a href="https:&#x2F;&#x2F;yoloinfinity55.github.io&#x2F;rustblog&#x2F;blog&#x2F;updated-project-specification&#x2F;" class="block bg-gray-100 dark:bg-gray-800 rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-200">
+    <div class="p-6">
+      <h2 class="text-xl font-semibold mb-2 text-text dark:text-text">Updated RustBlog Project Specification</h2>
+      
+        <p class="text-gray-700 dark:text-gray-300"></p>
+      
+    </div>
+    <div class="px-6 pb-4">
+      <span class="text-sm text-gray-500 dark:text-gray-400">Oct 03, 2025</span>
+    </div>
+  </a>
+  
+  <a href="https:&#x2F;&#x2F;yoloinfinity55.github.io&#x2F;rustblog&#x2F;blog&#x2F;third-post&#x2F;" class="block bg-gray-100 dark:bg-gray-800 rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-200">
+    <div class="p-6">
+      <h2 class="text-xl font-semibold mb-2 text-text dark:text-text">My Third Blog Post</h2>
+      
+        <p class="text-gray-700 dark:text-gray-300"></p>
+      
+    </div>
+    <div class="px-6 pb-4">
+      <span class="text-sm text-gray-500 dark:text-gray-400">Oct 02, 2025</span>
+    </div>
+  </a>
+  
+  <a href="https:&#x2F;&#x2F;yoloinfinity55.github.io&#x2F;rustblog&#x2F;blog&#x2F;second-post&#x2F;" class="block bg-gray-100 dark:bg-gray-800 rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-200">
+    <div class="p-6">
+      <h2 class="text-xl font-semibold mb-2 text-text dark:text-text">My Second Blog Post</h2>
+      
+        <p class="text-gray-700 dark:text-gray-300"></p>
+      
+    </div>
+    <div class="px-6 pb-4">
+      <span class="text-sm text-gray-500 dark:text-gray-400">Oct 01, 2025</span>
+    </div>
+  </a>
+  
+  <a href="https:&#x2F;&#x2F;yoloinfinity55.github.io&#x2F;rustblog&#x2F;blog&#x2F;first-post&#x2F;" class="block bg-gray-100 dark:bg-gray-800 rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-200">
+    <div class="p-6">
+      <h2 class="text-xl font-semibold mb-2 text-text dark:text-text">My First Blog Post</h2>
+      
+        <p class="text-gray-700 dark:text-gray-300"></p>
+      
+    </div>
+    <div class="px-6 pb-4">
+      <span class="text-sm text-gray-500 dark:text-gray-400">Sep 30, 2025</span>
+    </div>
+  </a>
+  
+</div>
 
     </div>
-  </section>
-
   </main>
-  <footer class="border-t border-gray-200 text-center py-6 text-sm text-gray-500">
+
+  <!-- Footer -->
+  <footer class="border-t border-gray-200 dark:border-gray-700 text-center py-6 text-sm text-gray-500 dark:text-gray-300 bg-gray-100 dark:bg-gray-900">
     <p>&copy; 2025 RustBlog</p>
   </footer>
 </body>
