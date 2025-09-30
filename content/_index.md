@@ -3,4 +3,4 @@ title = "Welcome to RustBlog"
 template = "index.html"
 +++
 # Welcome
-Check out the [blog](/blog)!
+Check out the [blog](blog)!
