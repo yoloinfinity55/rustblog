@@ -11,8 +11,8 @@
 }
 
 [data-theme='dark'] {
-  --color-bg: #1F2A44;
-  --color-text: #E5E7EB;
+  --color-bg: #bdc6d9ff;
+  --color-text: #EF4444; /* Changed to red */
   --color-gray-100: #374151;
   --color-gray-700: #f3f4f6;
   --color-gray-200: #374151;
