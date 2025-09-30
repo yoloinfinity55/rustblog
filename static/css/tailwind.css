@@ -1,8 +1,5 @@
-@tailwind base;
-@tailwind components;
-
 :root {
-  --color-bg: #F7F7F7;
+  --color-bg: yellow;
   --color-text: #1F2A44;
   --color-accent: #1E40AF;
   --color-gray-100: #f3f4f6;
@@ -11,7 +8,7 @@
 }
 
 [data-theme='dark'] {
-  --color-bg: #bdc6d9ff;
+  --color-bg: yellow;
   --color-text: #EF4444; /* Changed to red */
   --color-gray-100: #374151;
   --color-gray-700: #f3f4f6;
