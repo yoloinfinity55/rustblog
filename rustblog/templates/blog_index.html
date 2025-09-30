@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Blog{% endblock %}
+{% block content %}
+  <h1 class="text-3xl font-bold mb-4">{{ section.title }}</h1>
+  <ul class="space-y-4">
+    {% for post in section.pages %}
+      <li>
+        <a href="{{ post.permalink }}" class="text-xl text-primary hover:underline">{{ post.title }}</a>
+        <p class="text-sm text-gray-600">{{ post.date | date(format="%B %d, %Y") }}</p>
+        <p>{{ post.summary | safe }}</p>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}

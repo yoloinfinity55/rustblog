@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}{{ term.name | capitalize }}{% endblock %}
+{% block content %}
+  <h1 class="text-3xl font-bold mb-4">{{ term.name | capitalize }}</h1>
+  <ul class="space-y-4">
+    {% for page in term.pages %}
+      <li>
+        <a href="{{ page.permalink }}" class="text-xl text-primary hover:underline">{{ page.title }}</a>
+        <p class="text-sm text-gray-600">{{ page.date | date(format="%B %d, %Y") }}</p>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}
