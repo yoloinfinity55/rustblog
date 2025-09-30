@@ -1,5 +1,5 @@
 title = "RustBlog"
-base_url = "http://localhost:1111"
+base_url = "https://yoloinfinity55.github.io/rustblog"
 description = "A minimalist blog with Zola and Tailwind CSS"
 default_language = "en"
 
