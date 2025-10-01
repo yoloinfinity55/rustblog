@@ -112,7 +112,7 @@
 <li>
 <p><strong>Zola Version:</strong> Look for the step that downloads Zola. The version number is usually right in the URL.</p>
 <pre data-lang="yaml" style="background-color:#2b303b;color:#c0c5ce;" class="language-yaml "><code class="language-yaml" data-lang="yaml"><span>- </span><span style="color:#bf616a;">run</span><span>: </span><span style="color:#b48ead;">|
-</span><span style="color:#a3be8c;">    curl -L https://github.com/getzola/zola/releases/download/v0.19.1/zola-v0.19.1-x86_64-unknown-linux-gnu.tar.gz | tar -xz
+</span><span style="color:#a3be8c;">    curl -L https://github.com/getzola/zola/releases/download/v0.21.0/zola-v0.21.0-x86_64-unknown-linux-gnu.tar.gz | tar -xz
 </span><span style="color:#a3be8c;">    sudo mv zola /usr/local/bin/
 </span></code></pre>
 </li>
@@ -120,7 +120,7 @@
 <p><strong>Node.js Version:</strong> Look for the <code>actions/setup-node</code> step, which specifies the version to use.</p>
 <pre data-lang="yaml" style="background-color:#2b303b;color:#c0c5ce;" class="language-yaml "><code class="language-yaml" data-lang="yaml"><span>- </span><span style="color:#bf616a;">uses</span><span>: </span><span style="color:#a3be8c;">actions/setup-node@v3
 </span><span>  </span><span style="color:#bf616a;">with</span><span>:
-</span><span>    </span><span style="color:#bf616a;">node-version</span><span>: &#39;</span><span style="color:#a3be8c;">18</span><span>&#39;
+</span><span>    </span><span style="color:#bf616a;">node-version</span><span>: &#39;</span><span style="color:#a3be8c;">22</span><span>&#39;
 </span></code></pre>
 </li>
 </ul>
