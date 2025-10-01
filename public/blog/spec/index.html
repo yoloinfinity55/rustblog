@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en" x-data="{ theme: 'light', menuOpen: false }" x-init="
+    theme = localStorage.getItem('theme') 
+        || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    $watch('theme', val => { 
+        localStorage.setItem('theme', val); 
+        $el.setAttribute('data-theme', val); 
+    });
+    $el.setAttribute('data-theme', theme);
+" class="bg-bg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A minimalist blog with Zola and Tailwind CSS">
+  <title>RustyBlog | </title>
+  <link rel="stylesheet" href="https://yoloinfinity55.github.io/rustblog/css/output.css">
+  <link rel="stylesheet" href="https://yoloinfinity55.github.io/rustblog/css/theme.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+
+<body class="min-h-screen flex flex-col font-sans text-text">
+  <!-- Header -->
+  <header class="border-b border-gray-200 sticky top-0 bg-gray-100 dark:bg-gray-900 z-50">
+    <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="https://yoloinfinity55.github.io/rustblog" class="text-2xl font-semibold">RustyBlog</a>
+      
+      <!-- Desktop Menu -->
+      <div class="hidden md:flex items-center space-x-8">
+        <a href="https://yoloinfinity55.github.io/rustblog" class="hover:text-accent transition-colors">Home</a>
+        <a href="https://yoloinfinity55.github.io/rustblog/blog" class="hover:text-accent transition-colors">Blog</a>
+        <a href="https://yoloinfinity55.github.io/rustblog/tags" class="hover:text-accent transition-colors">Tags</a>
+        <button title="Toggle theme" aria-label="Toggle theme" 
+          @click="theme = (theme === 'light' ? 'dark' : 'light')" 
+          class="text-text hover:text-accent transition-colors">
+          <span x-show="theme === 'light'">🌙</span>
+          <span x-show="theme === 'dark'">☀️</span>
+        </button>
+      </div>
+
+      <!-- Mobile Hamburger -->
+      <div class="md:hidden">
+        <button @click="menuOpen = !menuOpen" class="text-text hover:text-accent" title="Toggle menu" aria-label="Toggle menu">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path :d="menuOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16m-7 6h7'" 
+              stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+          </svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div x-show="menuOpen" class="md:hidden border-t border-gray-200 dark:border-gray-700 px-6 py-4 space-y-2">
+      <a href="https://yoloinfinity55.github.io/rustblog" 
+         @click="menuOpen = false" 
+         class="block py-2 hover:text-accent transition-colors">Home</a>
+      <a href="https://yoloinfinity55.github.io/rustblog/blog" 
+         @click="menuOpen = false" 
+         class="block py-2 hover:text-accent transition-colors">Blog</a>
+      <a href="https://yoloinfinity55.github.io/rustblog/tags" 
+         @click="menuOpen = false" 
+         class="block py-2 hover:text-accent transition-colors">Tags</a>
+      <button title="Toggle theme" aria-label="Toggle theme" 
+        @click="theme = (theme === 'light' ? 'dark' : 'light'); menuOpen = false" 
+        class="block py-2 hover:text-accent transition-colors">
+        <span x-text="theme === 'light' ? '☀️ Light Mode' : '🌙 Dark Mode'"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container mx-auto px-6 py-12 flex-grow">
+    <div class="bg-gray-100 dark:bg-gray-800 rounded-xl shadow-md p-8">
+      
+<article class="blog-post">
+    <header>
+        <h1>Spec</h1>
+        <div class="post-meta">
+            <time datetime="2025-10-03">October 03, 2025</time>
+            
+            <div class="tags">
+                
+                <a href="https://yoloinfinity55.github.io/rustblog/tags/project/">#project</a>
+                
+                <a href="https://yoloinfinity55.github.io/rustblog/tags/specification/">#specification</a>
+                
+                <a href="https://yoloinfinity55.github.io/rustblog/tags/updates/">#updates</a>
+                
+            </div>
+            
+        </div>
+    </header>
+    
+    <div class="post-content">
+        <h1 id="specification-rustblog-minimalist-markdown-blog-with-zola-and-tailwind-css-updated">Specification: RustBlog - Minimalist Markdown Blog with Zola and Tailwind CSS (Updated)</h1>
+<h2 id="1-project-overview">1. Project Overview</h2>
+<ul>
+<li><strong>Name</strong>: RustBlog</li>
+<li><strong>Objective</strong>: Build a minimalist static blog using Zola and Tailwind CSS on a Mac mini M1, deployed to GitHub Pages.</li>
+<li><strong>Platform</strong>: macOS (M1, ARM64, Ventura/Sonoma+)</li>
+<li><strong>Deployment</strong>: GitHub Pages</li>
+<li><strong>Features</strong>:
+<ul>
+<li>Responsive, minimalist blog with homepage, blog index, and post pages.</li>
+<li>Markdown content with syntax highlighting.</li>
+<li>Tags and categories with dedicated pages.</li>
+<li>Tailwind CSS with a clean, monochromatic design and dark mode toggle.</li>
+<li>Automated deployment via GitHub Actions.</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-requirements">2. Requirements</h2>
+<ul>
+<li><strong>Hardware</strong>: Mac mini M1 (macOS Ventura/Sonoma+)</li>
+<li><strong>Software</strong>:
+<ul>
+<li>Zola (v0.19.1+, ARM64)</li>
+<li>Node.js (v18+, ARM64), npm</li>
+<li>Homebrew, Git</li>
+<li>VS Code (or similar)</li>
+</ul>
+</li>
+<li><strong>Dependencies</strong>:
+<ul>
+<li>Tailwind CSS, PostCSS, Autoprefixer, <code>@tailwindcss/typography</code></li>
+<li>Alpine.js (via CDN for dark mode and mobile menu)</li>
+<li>GitHub repository</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-project-setup">3. Project Setup</h2>
+<h3 id="install-dependencies">Install Dependencies</h3>
+<pre data-lang="bash" style="background-color:#2b303b;color:#c0c5ce;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#65737e;"># Install Homebrew (if not installed)
+</span><span style="color:#bf616a;">/bin/bash -c </span><span>&quot;$</span><span style="color:#a3be8c;">(</span><span style="color:#bf616a;">curl -fsSL</span><span style="color:#a3be8c;"> https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)</span><span>&quot;
+</span><span>
+</span><span style="color:#65737e;"># Install Node.js
+</span><span style="color:#bf616a;">brew</span><span> install node
+</span><span>
+</span><span style="color:#65737e;"># Install Zola (v0.19.1, ARM64)
+</span><span style="color:#bf616a;">curl -L</span><span> https://github.com/getzola/zola/releases/download/v0.19.1/zola-v0.19.1-aarch64-apple-darwin.tar.gz | </span><span style="color:#bf616a;">tar -xz
+</span><span style="color:#bf616a;">chmod</span><span> +x zola
+</span><span style="color:#bf616a;">sudo</span><span> mv zola /usr/local/bin/
+</span><span>
+</span><span style="color:#65737e;"># Install Git
+</span><span style="color:#bf616a;">brew</span><span> install git
+</span></code></pre>
+<h3 id="initialize-project">Initialize Project</h3>
+<pre data-lang="bash" style="background-color:#2b303b;color:#c0c5ce;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#65737e;"># Create and enter project directory
+</span><span style="color:#bf616a;">mkdir</span><span> rustblog &amp;&amp; </span><span style="color:#96b5b4;">cd</span><span> rustblog
+</span><span>
+</span><span style="color:#65737e;"># Initialize Zola in the current directory
+</span><span style="color:#bf616a;">zola</span><span> init .
+</span><span style="color:#65737e;"># Set base_url to http://localhost:1111 when prompted
+</span><span>
+</span><span style="color:#65737e;"># Initialize Node.js and install Tailwind CSS
+</span><span style="color:#bf616a;">npm</span><span> init</span><span style="color:#bf616a;"> -y
+</span><span style="color:#bf616a;">npm</span><span> install</span><span style="color:#bf616a;"> -D</span><span> tailwindcss postcss autoprefixer @tailwindcss/typography
+</span><span style="color:#bf616a;">npx</span><span> tailwindcss init</span><span style="color:#bf616a;"> -p
+</span></code></pre>
+<h2 id="4-file-structure">4. File Structure</h2>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>rustblog/
+</span><span>├── .github/workflows/deploy.yml
+</span><span>├── config.toml
+</span><span>├── content/
+</span><span>│   ├── _index.md
+</span><span>│   └── blog/
+</span><span>│       ├── _index.md
+</span><span>│       ├── first-post.md
+</span><span>│       ├── second-post.md
+</span><span>│       └── third-post.md
+</span><span>├── static/css/
+</span><span>│   ├── tailwind.css
+</span><span>│   └── output.css
+</span><span>├── templates/
+</span><span>│   ├── base.html
+</span><span>│   ├── index.html
+</span><span>│   ├── blog_index.html
+</span><span>│   ├── page.html
+</span><span>│   ├── taxonomy.html
+</span><span>│   └── taxonomies.html
+</span><span>├── package.json
+</span><span>├── postcss.config.js
+</span><span>├── tailwind.config.js
+</span><span>└── .gitignore
+</span></code></pre>
+<h3 id="create-structure">Create Structure</h3>
+<pre data-lang="bash" style="background-color:#2b303b;color:#c0c5ce;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#bf616a;">mkdir -p</span><span> .github/workflows content/blog static/css templates
+</span><span style="color:#bf616a;">touch</span><span> .github/workflows/deploy.yml config.toml
+</span><span style="color:#bf616a;">touch</span><span> content/_index.md content/blog/_index.md content/blog/first-post.md content/blog/second-post.md content/blog/third-post.md
+</span><span style="color:#bf616a;">touch</span><span> static/css/tailwind.css static/css/output.css
+</span><span style="color:#bf616a;">touch</span><span> templates/base.html templates/index.html templates/blog_index.html
+</span><span style="color:#bf616a;">touch</span><span> templates/page.html templates/taxonomy.html templates/taxonomies.html
+</span><span style="color:#bf616a;">touch</span><span> .gitignore postcss.config.js
+</span></code></pre>
+<h2 id="5-configuration">5. Configuration</h2>
+<h3 id="config-toml">config.toml</h3>
+<pre data-lang="toml" style="background-color:#2b303b;color:#c0c5ce;" class="language-toml "><code class="language-toml" data-lang="toml"><span style="color:#bf616a;">title </span><span>= &quot;</span><span style="color:#a3be8c;">RustBlog</span><span>&quot;
+</span><span style="color:#bf616a;">base_url </span><span>= &quot;</span><span style="color:#a3be8c;">http://localhost:1111</span><span>&quot;
+</span><span style="color:#bf616a;">description </span><span>= &quot;</span><span style="color:#a3be8c;">A minimalist blog with Zola and Tailwind CSS</span><span>&quot;
+</span><span style="color:#bf616a;">default_language </span><span>= &quot;</span><span style="color:#a3be8c;">en</span><span>&quot;
+</span><span>
+</span><span>[taxonomies]
+</span><span style="color:#bf616a;">tags </span><span>= [&quot;</span><span style="color:#a3be8c;">tags</span><span>&quot;]
+</span><span style="color:#bf616a;">categories </span><span>= [&quot;</span><span style="color:#a3be8c;">categories</span><span>&quot;]
+</span><span>
+</span><span>[markdown]
+</span><span style="color:#bf616a;">highlight_code </span><span>= </span><span style="color:#d08770;">true
+</span></code></pre>
+<h3 id="tailwind-config-js">tailwind.config.js</h3>
+<pre data-lang="javascript" style="background-color:#2b303b;color:#c0c5ce;" class="language-javascript "><code class="language-javascript" data-lang="javascript"><span>module.exports = {
+</span><span>  content: [&#39;</span><span style="color:#a3be8c;">./templates/**/*.{html,md}</span><span>&#39;, &#39;</span><span style="color:#a3be8c;">./content/**/*.{html,md}</span><span>&#39;],
+</span><span>  darkMode: &#39;</span><span style="color:#a3be8c;">class</span><span>&#39;,
+</span><span>  theme: {
+</span><span>    extend: {
+</span><span>      colors: {
+</span><span>        accent: &#39;</span><span style="color:#a3be8c;">#1E40AF</span><span>&#39;,
+</span><span>        bg: &#39;</span><span style="color:#a3be8c;">#F7F7F7</span><span>&#39;,
+</span><span>        text: &#39;</span><span style="color:#a3be8c;">#1F2A44</span><span>&#39;,
+</span><span>        darkBg: &#39;</span><span style="color:#a3be8c;">#1F2A44</span><span>&#39;,
+</span><span>        darkText: &#39;</span><span style="color:#a3be8c;">#E5E7EB</span><span>&#39;,
+</span><span>      },
+</span><span>      </span><span style="color:#8fa1b3;">typography</span><span>: (</span><span style="color:#bf616a;">theme</span><span>) </span><span style="color:#b48ead;">=&gt; </span><span>({
+</span><span>        DEFAULT: {
+</span><span>          css: {
+</span><span>            color: </span><span style="color:#8fa1b3;">theme</span><span>(&#39;</span><span style="color:#a3be8c;">colors.text</span><span>&#39;),
+</span><span>            &#39;</span><span style="color:#a3be8c;">a</span><span>&#39;: { color: </span><span style="color:#8fa1b3;">theme</span><span>(&#39;</span><span style="color:#a3be8c;">colors.accent</span><span>&#39;), &#39;</span><span style="color:#a3be8c;">text-decoration</span><span>&#39;: &#39;</span><span style="color:#a3be8c;">none</span><span>&#39;, &#39;</span><span style="color:#a3be8c;">transition</span><span>&#39;: &#39;</span><span style="color:#a3be8c;">color 0.2s</span><span>&#39;, &#39;</span><span style="color:#a3be8c;">font-weight</span><span>&#39;: &#39;</span><span style="color:#a3be8c;">500</span><span>&#39; },
+</span><span>            &#39;</span><span style="color:#a3be8c;">a:hover</span><span>&#39;: { color: </span><span style="color:#8fa1b3;">theme</span><span>(&#39;</span><span style="color:#a3be8c;">colors.accent</span><span>&#39;), &#39;</span><span style="color:#a3be8c;">text-decoration</span><span>&#39;: &#39;</span><span style="color:#a3be8c;">underline</span><span>&#39; },
+</span><span>            &#39;</span><span style="color:#a3be8c;">h1, h2, h3, h4, h5, h6</span><span>&#39;: { color: </span><span style="color:#8fa1b3;">theme</span><span>(&#39;</span><span style="color:#a3be8c;">colors.text</span><span>&#39;), &#39;</span><span style="color:#a3be8c;">font-weight</span><span>&#39;: &#39;</span><span style="color:#a3be8c;">600</span><span>&#39; },
+</span><span>            &#39;</span><span style="color:#a3be8c;">code</span><span>&#39;: { background: </span><span style="color:#8fa1b3;">theme</span><span>(&#39;</span><span style="color:#a3be8c;">colors.gray.100</span><span>&#39;), padding: &#39;</span><span style="color:#a3be8c;">2px 4px</span><span>&#39;, borderRadius: &#39;</span><span style="color:#a3be8c;">2px</span><span>&#39;, &#39;</span><span style="color:#a3be8c;">font-size</span><span>&#39;: &#39;</span><span style="color:#a3be8c;">0.9em</span><span>&#39; },
+</span><span>            &#39;</span><span style="color:#a3be8c;">pre</span><span>&#39;: { background: </span><span style="color:#8fa1b3;">theme</span><span>(&#39;</span><span style="color:#a3be8c;">colors.gray.100</span><span>&#39;), padding: &#39;</span><span style="color:#a3be8c;">1rem</span><span>&#39;, borderRadius: &#39;</span><span style="color:#a3be8c;">4px</span><span>&#39; },
+</span><span>            &#39;</span><span style="color:#a3be8c;">p</span><span>&#39;: { margin: &#39;</span><span style="color:#a3be8c;">1.5rem 0</span><span>&#39; },
+</span><span>          },
+</span><span>        },
+</span><span>        dark: {
+</span><span>          css: {
+</span><span>            color: </span><span style="color:#8fa1b3;">theme</span><span>(&#39;</span><span style="color:#a3be8c;">colors.darkText</span><span>&#39;),
+</span><span>            &#39;</span><span style="color:#a3be8c;">a</span><span>&#39;: { color: </span><span style="color:#8fa1b3;">theme</span><span>(&#39;</span><span style="color:#a3be8c;">colors.accent</span><span>&#39;) },
+</span><span>            &#39;</span><span style="color:#a3be8c;">a:hover</span><span>&#39;: { color: </span><span style="color:#8fa1b3;">theme</span><span>(&#39;</span><span style="color:#a3be8c;">colors.accent</span><span>&#39;), &#39;</span><span style="color:#a3be8c;">text-decoration</span><span>&#39;: &#39;</span><span style="color:#a3be8c;">underline</span><span>&#39; },
+</span><span>            &#39;</span><span style="color:#a3be8c;">h1, h2, h3, h4, h5, h6</span><span>&#39;: { color: </span><span style="color:#8fa1b3;">theme</span><span>(&#39;</span><span style="color:#a3be8c;">colors.darkText</span><span>&#39;) },
+</span><span>            &#39;</span><span style="color:#a3be8c;">code</span><span>&#39;: { background: </span><span style="color:#8fa1b3;">theme</span><span>(&#39;</span><span style="color:#a3be8c;">colors.gray.700</span><span>&#39;), color: </span><span style="color:#8fa1b3;">theme</span><span>(&#39;</span><span style="color:#a3be8c;">colors.darkText</span><span>&#39;) },
+</span><span>            &#39;</span><span style="color:#a3be8c;">pre</span><span>&#39;: { background: </span><span style="color:#8fa1b3;">theme</span><span>(&#39;</span><span style="color:#a3be8c;">colors.gray.700</span><span>&#39;) },
+</span><span>          },
+</span><span>        },
+</span><span>      }),
+</span><span>      fontFamily: {
+</span><span>        sans: [&#39;</span><span style="color:#a3be8c;">Inter</span><span>&#39;, &#39;</span><span style="color:#a3be8c;">ui-sans-serif</span><span>&#39;, &#39;</span><span style="color:#a3be8c;">system-ui</span><span>&#39;, &#39;</span><span style="color:#a3be8c;">-apple-system</span><span>&#39;, &#39;</span><span style="color:#a3be8c;">sans-serif</span><span>&#39;],
+</span><span>      },
+</span><span>    },
+</span><span>  },
+</span><span>  plugins: [</span><span style="color:#96b5b4;">require</span><span>(&#39;</span><span style="color:#a3be8c;">@tailwindcss/typography</span><span>&#39;)],
+</span><span>}
+</span></code></pre>
+<h3 id="package-json">package.json</h3>
+<pre data-lang="json" style="background-color:#2b303b;color:#c0c5ce;" class="language-json "><code class="language-json" data-lang="json"><span>{
+</span><span>  &quot;</span><span style="color:#a3be8c;">scripts</span><span>&quot;: {
+</span><span>    &quot;</span><span style="color:#a3be8c;">build:css</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">tailwindcss -i static/css/tailwind.css -o static/css/output.css --minify</span><span>&quot;,
+</span><span>    &quot;</span><span style="color:#a3be8c;">watch:css</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">tailwindcss -i static/css/tailwind.css -o static/css/output.css --watch</span><span>&quot;,
+</span><span>    &quot;</span><span style="color:#a3be8c;">build</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">npm run build:css &amp;&amp; zola build</span><span>&quot;
+</span><span>  },
+</span><span>  &quot;</span><span style="color:#a3be8c;">devDependencies</span><span>&quot;: {
+</span><span>    &quot;</span><span style="color:#a3be8c;">@tailwindcss/typography</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">^0.5.10</span><span>&quot;,
+</span><span>    &quot;</span><span style="color:#a3be8c;">autoprefixer</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">^10.4.20</span><span>&quot;,
+</span><span>    &quot;</span><span style="color:#a3be8c;">postcss</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">^8.4.47</span><span>&quot;,
+</span><span>    &quot;</span><span style="color:#a3be8c;">tailwindcss</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">^3.4.13</span><span>&quot;
+</span><span>  }
+</span><span>}
+</span></code></pre>
+<h3 id="postcss-config-js">postcss.config.js</h3>
+<pre data-lang="javascript" style="background-color:#2b303b;color:#c0c5ce;" class="language-javascript "><code class="language-javascript" data-lang="javascript"><span>module.exports = {
+</span><span>  plugins: {
+</span><span>    tailwindcss: {},
+</span><span>    autoprefixer: {},
+</span><span>  }
+</span><span>}
+</span></code></pre>
+<h3 id="static-css-tailwind-css">static/css/tailwind.css</h3>
+<pre data-lang="css" style="background-color:#2b303b;color:#c0c5ce;" class="language-css "><code class="language-css" data-lang="css"><span>@</span><span style="color:#b48ead;">tailwind </span><span style="color:#bf616a;">base</span><span style="color:#b48ead;">;
+</span><span>@</span><span style="color:#b48ead;">tailwind components;
+</span><span>@</span><span style="color:#b48ead;">tailwind utilities;
+</span></code></pre>
+<h3 id="gitignore">.gitignore</h3>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>node_modules/
+</span><span>public/
+</span><span>static/css/output.css
+</span></code></pre>
+<h2 id="6-content-and-templates">6. Content and Templates</h2>
+<h3 id="homepage-content-index-md">Homepage (content/_index.md)</h3>
+<p>Front matter and content for the homepage index file.</p>
+<h3 id="blog-section-content-blog-index-md">Blog Section (content/blog/_index.md)</h3>
+<p>Front matter configuration for the blog section listing.</p>
+<h3 id="sample-posts">Sample Posts</h3>
+<p>Create sample posts with front matter containing title, date, and taxonomies. Include code examples using fenced code blocks with language identifiers.</p>
+<h3 id="templates">Templates</h3>
+<p>All templates use Tera template syntax. Below are the key templates needed:</p>
+<h4 id="templates-base-html">templates/base.html</h4>
+<p>Base template with navigation, dark mode toggle using Alpine.js, and responsive mobile menu.</p>
+<h4 id="templates-index-html">templates/index.html</h4>
+<p>Homepage template extending base.html.</p>
+<h4 id="templates-blog-index-html">templates/blog_index.html</h4>
+<p>Blog listing page showing all posts.</p>
+<h4 id="templates-page-html">templates/page.html</h4>
+<p>Individual blog post template with tag links.</p>
+<h4 id="templates-taxonomies-html">templates/taxonomies.html</h4>
+<p>Lists all available tags.</p>
+<h4 id="templates-taxonomy-html">templates/taxonomy.html</h4>
+<p>Shows posts for a specific tag.</p>
+<h2 id="7-development">7. Development</h2>
+<h3 id="local-server">Local Server</h3>
+<pre data-lang="bash" style="background-color:#2b303b;color:#c0c5ce;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#96b5b4;">cd</span><span> rustblog
+</span><span style="color:#bf616a;">zola</span><span> serve  </span><span style="color:#65737e;"># Runs at http://localhost:1111
+</span></code></pre>
+<h3 id="watch-css">Watch CSS</h3>
+<pre data-lang="bash" style="background-color:#2b303b;color:#c0c5ce;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#bf616a;">npm</span><span> run watch:css  </span><span style="color:#65737e;"># In a new terminal
+</span></code></pre>
+<h3 id="build">Build</h3>
+<pre data-lang="bash" style="background-color:#2b303b;color:#c0c5ce;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#bf616a;">npm</span><span> run build  </span><span style="color:#65737e;"># Outputs to public/
+</span></code></pre>
+<h2 id="8-deployment">8. Deployment</h2>
+<h3 id="git-setup">Git Setup</h3>
+<pre data-lang="bash" style="background-color:#2b303b;color:#c0c5ce;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#96b5b4;">cd</span><span> rustblog
+</span><span style="color:#bf616a;">git</span><span> init
+</span><span style="color:#bf616a;">git</span><span> add .
+</span><span style="color:#bf616a;">git</span><span> commit</span><span style="color:#bf616a;"> -m </span><span>&quot;</span><span style="color:#a3be8c;">Initial commit</span><span>&quot;
+</span><span style="color:#bf616a;">git</span><span> remote add origin https://github.com/yoloinfinity55/rustblog.git
+</span><span style="color:#bf616a;">git</span><span> push</span><span style="color:#bf616a;"> -u</span><span> origin main
+</span></code></pre>
+<h3 id="github-actions">GitHub Actions</h3>
+<p>Create a workflow file at <code>.github/workflows/deploy.yml</code> that:</p>
+<ul>
+<li>Installs Zola</li>
+<li>Sets up Node.js</li>
+<li>Builds CSS with Tailwind</li>
+<li>Builds the site with Zola</li>
+<li>Deploys to GitHub Pages using the gh-pages branch</li>
+</ul>
+<h3 id="configure-github-pages">Configure GitHub Pages</h3>
+<ol>
+<li>Update <code>base_url</code> in <code>config.toml</code> to your GitHub Pages URL</li>
+<li>Go to repository Settings &gt; Pages</li>
+<li>Set source to <code>gh-pages</code> branch</li>
+<li>Commit and push changes</li>
+</ol>
+<h2 id="9-features">9. Features</h2>
+<ul>
+<li><strong>Minimalist Design</strong>: Monochromatic palette (grays, <code>#1E40AF</code> accent), <code>Inter</code> font, ample whitespace, no shadows, subtle dividers.</li>
+<li><strong>Responsive</strong>: Mobile-friendly navbar with hamburger menu, content limited to <code>max-w-3xl</code>.</li>
+<li><strong>Dark Mode</strong>: Toggled via emoji button (🌙/☀️), persists with localStorage.</li>
+<li><strong>Markdown Styling</strong>: <code>@tailwindcss/typography</code> with simplified prose styles.</li>
+<li><strong>Syntax Highlighting</strong>: Enabled via Zola's <code>highlight_code = true</code>.</li>
+<li><strong>Navigation</strong>: Text-only links (Home, Blog, Tags), no decorative buttons.</li>
+<li><strong>Taxonomies</strong>: Tags and categories with dedicated pages.</li>
+</ul>
+<h2 id="10-testing">10. Testing</h2>
+<ul>
+<li><strong>Local</strong>: Verify at <code>http://localhost:1111</code> for:
+<ul>
+<li>Homepage, blog index, post pages, and tag pages.</li>
+<li>Responsiveness (mobile, tablet, desktop).</li>
+<li>Dark mode toggle and syntax highlighting.</li>
+</ul>
+</li>
+<li><strong>Production</strong>: Check at your GitHub Pages URL for:
+<ul>
+<li>Correct asset loading (CSS, Alpine.js).</li>
+<li>Functional links and taxonomy pages.</li>
+</ul>
+</li>
+</ul>
+<h2 id="11-maintenance">11. Maintenance</h2>
+<ul>
+<li><strong>Add Posts</strong>: Create new <code>.md</code> files in <code>content/blog/</code>.</li>
+<li><strong>Update Styles</strong>: Modify <code>static/css/tailwind.css</code> or <code>tailwind.config.js</code>.</li>
+<li><strong>Update Dependencies</strong>: Run <code>brew upgrade</code> and <code>npm update</code>.</li>
+</ul>
+<h2 id="12-troubleshooting">12. Troubleshooting</h2>
+<ul>
+<li><strong>Zola</strong>: Use ARM64 binary (<code>aarch64-apple-darwin</code>). Check <code>config.toml</code> for correct <code>base_url</code>.</li>
+<li><strong>Tailwind</strong>: Verify <code>tailwind.config.js</code> paths, run <code>npm run build:css</code> if styles fail.</li>
+<li><strong>GitHub Pages</strong>: Check Actions logs, ensure <code>publish_dir</code> is <code>./public</code> and <code>base_url</code> matches GitHub Pages URL.</li>
+<li><strong>Dark Mode</strong>: Ensure Alpine.js CDN is accessible, check localStorage in browser dev tools.</li>
+</ul>
+<h2 id="13-deliverables">13. Deliverables</h2>
+<ul>
+<li>Static blog hosted at GitHub Pages</li>
+<li>GitHub repository with all source code</li>
+<li>Minimalist, responsive blog with sample content, tags, and categories</li>
+<li>Automated deployment pipeline via GitHub Actions</li>
+</ul>
+<h2 id="14-timeline">14. Timeline</h2>
+<ul>
+<li><strong>Day 1</strong>: Setup dependencies, initialize project, create templates and content.</li>
+<li><strong>Day 2</strong>: Test locally, set up Git and GitHub Actions.</li>
+<li><strong>Day 3</strong>: Deploy to GitHub Pages, validate production site.</li>
+</ul>
+<h2 id="15-resources">15. Resources</h2>
+<ul>
+<li><a href="https://www.getzola.org/documentation/">Zola Docs</a></li>
+<li><a href="https://tailwindcss.com/docs">Tailwind CSS Docs</a></li>
+<li><a href="https://docs.github.com/en/pages">GitHub Pages</a></li>
+<li><a href="https://alpinejs.dev/">Alpine.js Docs</a></li>
+<li><a href="https://rsms.me/inter/">Inter Font</a></li>
+</ul>
+<h2 id="16-key-updates-from-previous-specification">16. Key Updates from Previous Specification</h2>
+<ul>
+<li><strong>Folder Structure</strong>: Used <code>zola init .</code> to ensure a flat structure.</li>
+<li><strong>Minimalist Design</strong>: Implemented a monochromatic palette, <code>Inter</code> font, increased whitespace, removed shadows and decorative buttons, and used subtle dividers.</li>
+<li><strong>Paths</strong>: Ensured all configuration files use correct paths.</li>
+<li><strong>Templates</strong>: Enhanced with minimalist styling, simplified navbar, emoji-based dark mode toggle, and flat post listings.</li>
+<li><strong>Content</strong>: Added multiple sample posts with proper code block delimiters.</li>
+<li><strong>Configuration</strong>: Corrected <code>config.toml</code> taxonomies syntax and <code>base_url</code> for local development.</li>
+</ul>
+
+    </div>
+    
+    <footer class="post-footer">
+        
+        
+    </footer>
+</article>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-gray-200 dark:border-gray-700 text-center py-6 text-sm text-gray-500 dark:text-gray-300 bg-gray-100 dark:bg-gray-900">
+    <p>&copy; 2025 RustyBlog</p>
+  </footer>
+</body>
+</html>
