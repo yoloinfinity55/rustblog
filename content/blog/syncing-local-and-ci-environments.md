@@ -36,7 +36,7 @@ To check the versions used in your CI pipeline, you need to inspect your workflo
 - **Zola Version:** Look for the step that downloads Zola. The version number is usually right in the URL.
   ```yaml
   - run: |
-      curl -L https://github.com/getzola/zola/releases/download/v0.19.1/zola-v0.19.1-x86_64-unknown-linux-gnu.tar.gz | tar -xz
+      curl -L https://github.com/getzola/zola/releases/download/v0.21.0/zola-v0.21.0-x86_64-unknown-linux-gnu.tar.gz | tar -xz
       sudo mv zola /usr/local/bin/
   ```
 
@@ -44,7 +44,7 @@ To check the versions used in your CI pipeline, you need to inspect your workflo
   ```yaml
   - uses: actions/setup-node@v3
     with:
-      node-version: '18'
+      node-version: '22'
   ```
 
 ### 2. The Problem: Environment Drift
