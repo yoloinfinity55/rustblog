@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en" x-data="{ theme: 'light', menuOpen: false }" x-init="
+    theme = localStorage.getItem('theme') 
+        || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    $watch('theme', val => { 
+        localStorage.setItem('theme', val); 
+        $el.setAttribute('data-theme', val); 
+    });
+    $el.setAttribute('data-theme', theme);
+" class="bg-bg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A minimalist blog with Zola and Tailwind CSS">
+  <title>RustyBlog | </title>
+  <link rel="stylesheet" href="https://yoloinfinity55.github.io/rustblog/css/output.css">
+  <link rel="stylesheet" href="https://yoloinfinity55.github.io/rustblog/css/theme.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+
+<body class="min-h-screen flex flex-col font-sans text-text">
+  <!-- Header -->
+  <header class="border-b border-gray-200 sticky top-0 bg-gray-100 dark:bg-gray-900 z-50">
+    <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="https://yoloinfinity55.github.io/rustblog" class="text-2xl font-semibold">RustyBlog</a>
+      
+      <!-- Desktop Menu -->
+      <div class="hidden md:flex items-center space-x-8">
+        <a href="https://yoloinfinity55.github.io/rustblog" class="hover:text-accent transition-colors">Home</a>
+        <a href="https://yoloinfinity55.github.io/rustblog/blog" class="hover:text-accent transition-colors">Blog</a>
+        <a href="https://yoloinfinity55.github.io/rustblog/tags" class="hover:text-accent transition-colors">Tags</a>
+        <button title="Toggle theme" aria-label="Toggle theme" 
+          @click="theme = (theme === 'light' ? 'dark' : 'light')" 
+          class="text-text hover:text-accent transition-colors">
+          <span x-show="theme === 'light'">🌙</span>
+          <span x-show="theme === 'dark'">☀️</span>
+        </button>
+      </div>
+
+      <!-- Mobile Hamburger -->
+      <div class="md:hidden">
+        <button @click="menuOpen = !menuOpen" class="text-text hover:text-accent" title="Toggle menu" aria-label="Toggle menu">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path :d="menuOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16m-7 6h7'" 
+              stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+          </svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div x-show="menuOpen" class="md:hidden border-t border-gray-200 dark:border-gray-700 px-6 py-4 space-y-2">
+      <a href="https://yoloinfinity55.github.io/rustblog" 
+         @click="menuOpen = false" 
+         class="block py-2 hover:text-accent transition-colors">Home</a>
+      <a href="https://yoloinfinity55.github.io/rustblog/blog" 
+         @click="menuOpen = false" 
+         class="block py-2 hover:text-accent transition-colors">Blog</a>
+      <a href="https://yoloinfinity55.github.io/rustblog/tags" 
+         @click="menuOpen = false" 
+         class="block py-2 hover:text-accent transition-colors">Tags</a>
+      <button title="Toggle theme" aria-label="Toggle theme" 
+        @click="theme = (theme === 'light' ? 'dark' : 'light'); menuOpen = false" 
+        class="block py-2 hover:text-accent transition-colors">
+        <span x-text="theme === 'light' ? '☀️ Light Mode' : '🌙 Dark Mode'"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container mx-auto px-6 py-12 flex-grow">
+    <div class="bg-gray-100 dark:bg-gray-800 rounded-xl shadow-md p-8">
+      
+<article class="blog-post">
+    <header>
+        <h1>ZOLA IN ACTION PART 2</h1>
+        <div class="post-meta">
+            <time datetime="2025-10-01">October 01, 2025</time>
+            
+            <div class="tags">
+                
+                <a href="https://yoloinfinity55.github.io/rustblog/tags/converted/">#converted</a>
+                
+            </div>
+            
+        </div>
+    </header>
+    
+    <div class="post-content">
+        <p>+++
+title = "Zola in Action: Setting Up Your First Project and Theme"
+date = 2025-10-01
+[taxonomies]
+tags = ["zola", "web-development", "themes", "tutorial"]
+categories = ["blog"]
++++</p>
+<h1 id="zola-in-action-setting-up-your-first-project-and-theme">Zola in Action: Setting Up Your First Project and Theme</h1>
+<p>Hey friends, how are you doing? This is a series on how to build a website using Zola. In the previous part, we discussed our goals for building a website and why we chose Zola, a static site generator, over traditional web technologies like WordPress or Django. In this part, we're actually going to see Zola in action! We'll initialize a project, integrate a theme, and understand how Zola fits into the process.</p>
+<h2 id="1-installing-zola">1. Installing Zola</h2>
+<p>To start, we first need to install Zola. The best way to do this is by visiting the official documentation at <a href="https://www.getzola.org/">zola.getzola.org</a>. You'll find installation instructions tailored to your operating system and distribution. The simplest method we recommend is to go to the GitHub releases page and download the binary specific to your system.</p>
+<p>If you encounter any issues or have questions about the installation process, please mention them in the comments, and we'll get back to you as soon as possible.</p>
+<p>Once downloaded, you can add the Zola binary to your system's PATH. This allows you to run Zola commands directly from your terminal by simply typing <code>zola</code> followed by the command. For example, to check the version, you'd type <code>zola --version</code>.</p>
+<h2 id="2-starting-a-new-zola-project">2. Starting a New Zola Project</h2>
+<p>Now that Zola is installed, let's start a new project. Navigate to your desired project directory in the terminal and run:</p>
+<pre data-lang="bash" style="background-color:#2b303b;color:#c0c5ce;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#bf616a;">zola</span><span> init .
+</span></code></pre>
+<p>When you run <code>zola init</code>, it will ask you a few questions:</p>
+<ul>
+<li><strong>What is the URL of your site (base_url)?</strong> This can be anything, for example, <code>https://yourwebsite.com</code> or <code>http://localhost:1111</code> for local development.</li>
+<li><strong>Do you want Sass compilation?</strong> (We can leave this to default: <code>yes</code>)</li>
+<li><strong>Do you want syntax highlighting?</strong> (Leave to default)</li>
+<li><strong>Do you want a search index?</strong> (Leave to default)</li>
+</ul>
+<p>All these questions and their answers are customizable and can be changed later in your <code>config.toml</code> file.</p>
+<p>After initialization, Zola creates a basic directory structure for you, including a <code>config.toml</code> file and various folders like <code>content/</code>, <code>templates/</code>, and <code>static/</code>.</p>
+<h2 id="3-exploring-the-default-structure">3. Exploring the Default Structure</h2>
+<p>To see what the default Zola structure looks like, you can run the development server:</p>
+<pre data-lang="bash" style="background-color:#2b303b;color:#c0c5ce;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#bf616a;">zola</span><span> serve
+</span></code></pre>
+<p>This command builds your website, compiles it, and serves it on <code>http://localhost:1111</code>. This is incredibly helpful for live development, as you can see your changes instantly. Since we haven't added any custom templates yet, Zola will display a default template page, indicating that it couldn't find a specific template to render.</p>
+<h2 id="4-installing-a-zola-theme">4. Installing a Zola Theme</h2>
+<p>Now, let's enhance our site by installing a theme. Zola has a vibrant theme ecosystem. You can find themes on the official Zola website or by searching GitHub.</p>
+<p>To install a theme:</p>
+<ol>
+<li>
+<p><strong>Choose a theme:</strong> For this example, let's say we choose a theme called "DeepThought" (you can choose any theme you like).</p>
+</li>
+<li>
+<p><strong>Clone the theme:</strong> Navigate into your project's <code>themes/</code> directory (if it doesn't exist, create it) and clone the theme's GitHub repository:</p>
+<pre data-lang="bash" style="background-color:#2b303b;color:#c0c5ce;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#96b5b4;">cd</span><span> themes
+</span><span style="color:#bf616a;">git</span><span> clone https://github.com/your-theme-repo/deepthought.git
+</span></code></pre>
+</li>
+<li>
+<p><strong>Configure <code>config.toml</code>:</strong> Go back to your project's root directory and open <code>config.toml</code>. Add or update the <code>theme</code> variable to the name of the theme's directory (which is usually the repository name):</p>
+<pre data-lang="toml" style="background-color:#2b303b;color:#c0c5ce;" class="language-toml "><code class="language-toml" data-lang="toml"><span style="color:#bf616a;">theme </span><span>= &quot;</span><span style="color:#a3be8c;">deepthought</span><span>&quot;
+</span></code></pre>
+</li>
+</ol>
+<h2 id="5-theme-specific-configuration">5. Theme-Specific Configuration</h2>
+<p>Many themes require additional configuration options in your <code>config.toml</code> to function correctly. These are specific to each theme. For example, the "DeepThought" theme might require <code>navbar_items</code> and <code>default_language</code> settings.</p>
+<p>If you encounter errors after setting the theme, check the theme's documentation (usually in its GitHub repository's <code>README.md</code>) for required configuration. You might need to add sections like this to your <code>config.toml</code>:</p>
+<pre data-lang="toml" style="background-color:#2b303b;color:#c0c5ce;" class="language-toml "><code class="language-toml" data-lang="toml"><span>[extra]
+</span><span style="color:#bf616a;">navbar_items </span><span>= [
+</span><span>    { </span><span style="color:#bf616a;">url </span><span>= &quot;</span><span style="color:#a3be8c;">/</span><span>&quot;, </span><span style="color:#bf616a;">name </span><span>= &quot;</span><span style="color:#a3be8c;">Home</span><span>&quot; },
+</span><span>    { </span><span style="color:#bf616a;">url </span><span>= &quot;</span><span style="color:#a3be8c;">/blog</span><span>&quot;, </span><span style="color:#bf616a;">name </span><span>= &quot;</span><span style="color:#a3be8c;">Blog</span><span>&quot; },
+</span><span>]
+</span><span>
+</span><span>[translations]
+</span><span style="color:#bf616a;">en </span><span>= { </span><span style="color:#bf616a;">title </span><span>= &quot;</span><span style="color:#a3be8c;">My Blog</span><span>&quot;, </span><span style="color:#bf616a;">base_url </span><span>= &quot;</span><span style="color:#a3be8c;">https://example.com</span><span>&quot; }
+</span><span style="color:#65737e;"># fr = { title = &quot;Mon Blog&quot;, base_url = &quot;https://example.com/fr&quot; }
+</span></code></pre>
+<p>After adding the necessary configuration, run <code>zola serve</code> again. If everything is set up correctly, your theme should now be applied, and you'll see its default layout. You might not have any content yet, but the theme's structure will be visible.</p>
+<p>In the next part of this series, we'll delve into configuring these theme options further and adding content to make our website truly shine. Thank you for reading!</p>
+
+    </div>
+    
+    <footer class="post-footer">
+        
+        
+    </footer>
+</article>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-gray-200 dark:border-gray-700 text-center py-6 text-sm text-gray-500 dark:text-gray-300 bg-gray-100 dark:bg-gray-900">
+    <p>&copy; 2025 RustyBlog</p>
+  </footer>
+</body>
+</html>
