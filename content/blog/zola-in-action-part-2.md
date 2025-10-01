@@ -7,14 +7,14 @@
          +++
 
 +++
-title = "Zola in Action: Setting Up Your First Project and Theme"
+title = "Zola in Action: Setting Up Your First Project and Theme - Revised"
 date = 2025-10-01
 [taxonomies]
 tags = ["zola", "web-development", "themes", "tutorial"]
 categories = ["blog"]
 +++
 
-# Zola in Action: Setting Up Your First Project and Theme
+# Zola in Action: Setting Up Your First Project and Theme - Revised
 
 Hey friends, how are you doing? This is a series on how to build a website using Zola. In the previous part, we discussed our goals for building a website and why we chose Zola, a static site generator, over traditional web technologies like WordPress or Django. In this part, we're actually going to see Zola in action! We'll initialize a project, integrate a theme, and understand how Zola fits into the process.
 
