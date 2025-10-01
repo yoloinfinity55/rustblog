@@ -1,6 +1,6 @@
 +++
 title = "Syncing Local and CI Environments"
-date = 2025-10-01
+date = 2025-09-30
 [taxonomies]
 tags = ["devops", "ci-cd", "github-actions"]
 categories = ["technical"]
