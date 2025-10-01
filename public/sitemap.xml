@@ -43,6 +43,10 @@
         <lastmod>2025-10-03</lastmod>
     </url>
     <url>
+        <loc>https://yoloinfinity55.github.io/rustblog/blog/updated-specification/</loc>
+        <lastmod>2025-10-01</lastmod>
+    </url>
+    <url>
         <loc>https://yoloinfinity55.github.io/rustblog/categories/</loc>
     </url>
     <url>
@@ -89,6 +93,12 @@
     </url>
     <url>
         <loc>https://yoloinfinity55.github.io/rustblog/tags/ci-cd/page/1/</loc>
+    </url>
+    <url>
+        <loc>https://yoloinfinity55.github.io/rustblog/tags/converted/</loc>
+    </url>
+    <url>
+        <loc>https://yoloinfinity55.github.io/rustblog/tags/converted/page/1/</loc>
     </url>
     <url>
         <loc>https://yoloinfinity55.github.io/rustblog/tags/devops/</loc>
