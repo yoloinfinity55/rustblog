@@ -1,19 +1,202 @@
 /* Light Mode (default) */
 :root {
-  --color-bg: 255 255 255;      /* White background */
-  --color-text: 17 24 39;       /* Gray-900 */
-  --color-accent: 59 130 246;   /* Blue-500 */
-  --color-gray-100: 243 244 246;
-  --color-gray-200: 229 231 235;
+  /* Background colors */
+  --color-bg: 249 250 251;         /* gray-50 - Main background */
+  --color-card: 255 255 255;       /* white - Card background */
+  
+  /* Text colors */
+  --color-text: 55 65 81;          /* gray-700 - Main text */
+  --color-text-muted: 107 114 128; /* gray-500 - Secondary text */
+  --color-text-dark: 17 24 39;     /* gray-900 - Headings */
+  
+  /* Accent/Link colors */
+  --color-accent: 37 99 235;       /* blue-600 - Links, buttons */
+  --color-accent-hover: 96 165 250; /* blue-400 - Hover state */
+  
+  /* Gray scale for borders, dividers, etc. */
+  --color-gray-50: 249 250 251;
+  --color-gray-100: 243 244 246;   /* Subtle backgrounds */
+  --color-gray-200: 229 231 235;   /* Borders, dividers */
+  --color-gray-300: 209 213 219;
+  --color-gray-600: 75 85 99;      /* Icons */
   --color-gray-700: 55 65 81;
+  --color-gray-800: 31 41 55;
+  --color-gray-900: 17 24 39;
+  
+  /* Badge colors (light backgrounds with dark text) */
+  --color-red-100: 254 226 226;
+  --color-red-800: 153 27 27;
+  
+  --color-orange-100: 255 237 213;
+  --color-orange-800: 154 52 18;
+  
+  --color-yellow-100: 254 249 195;
+  --color-yellow-800: 133 77 14;
+  
+  --color-green-100: 220 252 231;
+  --color-green-800: 22 101 52;
+  
+  --color-teal-100: 204 251 241;
+  --color-teal-800: 17 94 89;
+  
+  --color-blue-100: 219 234 254;
+  --color-blue-800: 30 64 175;
+  
+  --color-indigo-100: 224 231 255;
+  --color-indigo-800: 55 48 163;
+  
+  --color-purple-100: 243 232 255;
+  --color-purple-800: 107 33 168;
+  
+  --color-pink-100: 252 231 243;
+  --color-pink-800: 157 23 77;
+  
+  /* Shadow */
+  --color-shadow: 0 0 0 / 0.1;
 }
 
-/* Dark Mode (soft dark) */
+/* Dark Mode - Keep your [data-theme="dark"] selector! */
 [data-theme="dark"] {
-  --color-bg: 28 28 30;         /* Soft dark gray */
-  --color-text: 229 231 235;    /* Soft white */
-  --color-accent: 147 197 253;  /* Lighter blue */
-  --color-gray-100: 45 55 72;   /* Dark card background */
-  --color-gray-200: 75 85 99;   /* Borders/dividers */
-  --color-gray-700: 209 213 219;/* Muted text */
+  --color-bg: 22 24 32;            /* Deep dark */
+  --color-card: 28 30 38;          /* Card background */
+  
+  --color-text: 220 224 236;       /* Soft white */
+  --color-text-muted: 160 170 190; /* Muted text */
+  --color-text-dark: 243 244 246;  /* Headings in dark mode */
+  
+  --color-accent: 147 197 253;     /* Lighter blue accent */
+  --color-accent-hover: 191 219 254; /* Even lighter on hover */
+  
+  --color-gray-50: 28 30 38;
+  --color-gray-100: 32 36 48;      /* Card background */
+  --color-gray-200: 60 65 80;      /* Borders/dividers */
+  --color-gray-300: 75 85 99;
+  --color-gray-600: 160 170 190;
+  --color-gray-700: 180 190 210;
+  --color-gray-800: 200 210 230;
+  --color-gray-900: 220 224 236;
+  
+  /* Badge colors for dark mode */
+  --color-red-100: 80 30 30;
+  --color-red-800: 254 226 226;
+  
+  --color-orange-100: 80 45 25;
+  --color-orange-800: 255 237 213;
+  
+  --color-yellow-100: 75 65 25;
+  --color-yellow-800: 254 249 195;
+  
+  --color-green-100: 25 60 40;
+  --color-green-800: 220 252 231;
+  
+  --color-teal-100: 20 55 55;
+  --color-teal-800: 204 251 241;
+  
+  --color-blue-100: 30 50 80;
+  --color-blue-800: 219 234 254;
+  
+  --color-indigo-100: 40 40 85;
+  --color-indigo-800: 224 231 255;
+  
+  --color-purple-100: 60 35 85;
+  --color-purple-800: 243 232 255;
+  
+  --color-pink-100: 80 30 60;
+  --color-pink-800: 252 231 243;
+  
+  --color-shadow: 0 0 0 / 0.3;
 }
+
+/* Base styles */
+body {
+  font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: rgb(var(--color-text));
+  background: rgb(var(--color-bg));
+  transition: background 0.3s, color 0.3s;
+}
+
+/* Card styling */
+.card {
+  background: rgb(var(--color-card));
+  box-shadow: 0 4px 16px rgb(var(--color-shadow));
+  border-radius: 1rem;
+  padding: 2rem;
+  border: 1.5px solid rgb(var(--color-gray-200));
+  transition: all 0.3s;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  color: rgb(var(--color-text-dark));
+  font-weight: 700;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+a {
+  color: rgb(var(--color-accent));
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+a:hover {
+  color: rgb(var(--color-accent-hover));
+  text-decoration: underline;
+}
+
+/* Code blocks */
+code, pre {
+  background: rgb(var(--color-gray-100));
+  color: rgb(var(--color-accent));
+  border-radius: 0.3em;
+  padding: 0.2em 0.4em;
+  font-size: 0.95em;
+  font-family: 'Fira Code', 'Courier New', monospace;
+}
+
+/* Blockquotes */
+blockquote {
+  border-left: 4px solid rgb(var(--color-accent));
+  background: rgb(var(--color-gray-100));
+  padding: 0.5em 1em;
+  margin: 1.5em 0;
+  color: rgb(var(--color-text-muted));
+  font-style: italic;
+}
+
+/* Badge system */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.125rem 0.625rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.badge-blue {
+  background-color: rgb(var(--color-blue-100));
+  color: rgb(var(--color-blue-800));
+}
+
+.badge-green {
+  background-color: rgb(var(--color-green-100));
+  color: rgb(var(--color-green-800));
+}
+
+.badge-red {
+  background-color: rgb(var(--color-red-100));
+  color: rgb(var(--color-red-800));
+}
+
+.badge-yellow {
+  background-color: rgb(var(--color-yellow-100));
+  color: rgb(var(--color-yellow-800));
+}
+
+/* Add more badge colors as needed */
