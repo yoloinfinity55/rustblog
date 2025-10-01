@@ -31,6 +31,10 @@
         <lastmod>2025-10-03</lastmod>
     </url>
     <url>
+        <loc>https://yoloinfinity55.github.io/rustblog/blog/syncing-local-and-ci-environments/</loc>
+        <lastmod>2025-10-01</lastmod>
+    </url>
+    <url>
         <loc>https://yoloinfinity55.github.io/rustblog/blog/third-post/</loc>
         <lastmod>2025-10-02</lastmod>
     </url>
@@ -60,6 +64,12 @@
         <loc>https://yoloinfinity55.github.io/rustblog/categories/reflections/page/1/</loc>
     </url>
     <url>
+        <loc>https://yoloinfinity55.github.io/rustblog/categories/technical/</loc>
+    </url>
+    <url>
+        <loc>https://yoloinfinity55.github.io/rustblog/categories/technical/page/1/</loc>
+    </url>
+    <url>
         <loc>https://yoloinfinity55.github.io/rustblog/categories/updates/</loc>
     </url>
     <url>
@@ -73,6 +83,24 @@
     </url>
     <url>
         <loc>https://yoloinfinity55.github.io/rustblog/tags/blogging/page/1/</loc>
+    </url>
+    <url>
+        <loc>https://yoloinfinity55.github.io/rustblog/tags/ci-cd/</loc>
+    </url>
+    <url>
+        <loc>https://yoloinfinity55.github.io/rustblog/tags/ci-cd/page/1/</loc>
+    </url>
+    <url>
+        <loc>https://yoloinfinity55.github.io/rustblog/tags/devops/</loc>
+    </url>
+    <url>
+        <loc>https://yoloinfinity55.github.io/rustblog/tags/devops/page/1/</loc>
+    </url>
+    <url>
+        <loc>https://yoloinfinity55.github.io/rustblog/tags/github-actions/</loc>
+    </url>
+    <url>
+        <loc>https://yoloinfinity55.github.io/rustblog/tags/github-actions/page/1/</loc>
     </url>
     <url>
         <loc>https://yoloinfinity55.github.io/rustblog/tags/jamstack/</loc>
