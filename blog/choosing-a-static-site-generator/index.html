@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" x-data="{ theme: 'light', menuOpen: false }" x-init="
+    theme = localStorage.getItem('theme') 
+        || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    $watch('theme', val => { 
+        localStorage.setItem('theme', val); 
+        $el.setAttribute('data-theme', val); 
+    });
+    $el.setAttribute('data-theme', theme);
+" class="bg-bg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A minimalist blog with Zola and Tailwind CSS">
+  <title>RustyBlog | </title>
+  <link rel="stylesheet" href="https://yoloinfinity55.github.io/rustblog/css/output.css">
+  <link rel="stylesheet" href="https://yoloinfinity55.github.io/rustblog/css/theme.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+
+<body class="min-h-screen flex flex-col font-sans text-text">
+  <!-- Header -->
+  <header class="border-b border-gray-200 sticky top-0 bg-gray-100 dark:bg-gray-900 z-50">
+    <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="https://yoloinfinity55.github.io/rustblog" class="text-2xl font-semibold">RustyBlog</a>
+      
+      <!-- Desktop Menu -->
+      <div class="hidden md:flex items-center space-x-8">
+        <a href="https://yoloinfinity55.github.io/rustblog" class="hover:text-accent transition-colors">Home</a>
+        <a href="https://yoloinfinity55.github.io/rustblog/blog" class="hover:text-accent transition-colors">Blog</a>
+        <a href="https://yoloinfinity55.github.io/rustblog/tags" class="hover:text-accent transition-colors">Tags</a>
+        <button title="Toggle theme" aria-label="Toggle theme" 
+          @click="theme = (theme === 'light' ? 'dark' : 'light')" 
+          class="text-text hover:text-accent transition-colors">
+          <span x-show="theme === 'light'">🌙</span>
+          <span x-show="theme === 'dark'">☀️</span>
+        </button>
+      </div>
+
+      <!-- Mobile Hamburger -->
+      <div class="md:hidden">
+        <button @click="menuOpen = !menuOpen" class="text-text hover:text-accent" title="Toggle menu" aria-label="Toggle menu">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path :d="menuOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16m-7 6h7'" 
+              stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+          </svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div x-show="menuOpen" class="md:hidden border-t border-gray-200 dark:border-gray-700 px-6 py-4 space-y-2">
+      <a href="https://yoloinfinity55.github.io/rustblog" 
+         @click="menuOpen = false" 
+         class="block py-2 hover:text-accent transition-colors">Home</a>
+      <a href="https://yoloinfinity55.github.io/rustblog/blog" 
+         @click="menuOpen = false" 
+         class="block py-2 hover:text-accent transition-colors">Blog</a>
+      <a href="https://yoloinfinity55.github.io/rustblog/tags" 
+         @click="menuOpen = false" 
+         class="block py-2 hover:text-accent transition-colors">Tags</a>
+      <button title="Toggle theme" aria-label="Toggle theme" 
+        @click="theme = (theme === 'light' ? 'dark' : 'light'); menuOpen = false" 
+        class="block py-2 hover:text-accent transition-colors">
+        <span x-text="theme === 'light' ? '☀️ Light Mode' : '🌙 Dark Mode'"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container mx-auto px-6 py-12 flex-grow">
+    <div class="bg-gray-100 dark:bg-gray-800 rounded-xl shadow-md p-8">
+      
+<article class="blog-post">
+    <header>
+        <h1>Why We Chose a Static Site Generator for Our New Website</h1>
+        <div class="post-meta">
+            <time datetime="2025-09-30">September 30, 2025</time>
+            
+            <div class="tags">
+                
+                <a href="https://yoloinfinity55.github.io/rustblog/tags/tech/">#tech</a>
+                
+                <a href="https://yoloinfinity55.github.io/rustblog/tags/zola/">#zola</a>
+                
+                <a href="https://yoloinfinity55.github.io/rustblog/tags/jamstack/">#jamstack</a>
+                
+                <a href="https://yoloinfinity55.github.io/rustblog/tags/web-development/">#web-development</a>
+                
+            </div>
+            
+        </div>
+    </header>
+    
+    <div class="post-content">
+        <p>Hello, friends! We're excited to announce that we're planning to build a new website for Integracy. Before diving into development, we established a few key conditions for what we wanted to achieve.</p>
+<h3 id="our-core-requirements">Our Core Requirements</h3>
+<p>Our primary goals for the new website were:</p>
+<ol>
+<li><strong>Speed:</strong> The website needed to be exceptionally fast, with pages loading almost instantly. The best way to achieve this is by serving static pages, eliminating any server-side processing for each request.</li>
+<li><strong>Hosting Cost:</strong> The hosting costs should be minimal, ideally close to zero.</li>
+<li><strong>Customization:</strong> We needed the flexibility to easily customize any part of the site's appearance and functionality.</li>
+<li><strong>Easy Content Management:</strong> We wanted to add new content without writing any HTML or CSS code.</li>
+</ol>
+<h3 id="evaluating-our-options">Evaluating Our Options</h3>
+<p>With these conditions in mind, we considered two main approaches.</p>
+<h4 id="1-traditional-web-technologies">1. Traditional Web Technologies</h4>
+<p>Our first thought was to use traditional web technologies like WordPress or Django. In these systems, when you visit a URL (e.g., <code>www.xyz.com</code>), your request hits a web server. The server then processes the request, generates an HTML page on the fly, and sends it back to your browser.</p>
+<p>However, this approach doesn't align with our goals. The on-the-fly processing inherently slows down the site and means it isn't purely static. This also necessitates a web server for hosting, which introduces costs that we wanted to avoid.</p>
+<h4 id="2-static-site-generators-jamstack">2. Static Site Generators (Jamstack)</h4>
+<p>This led us to our second option: a static site generator (SSG) based on the Jamstack architecture. In a Jamstack setup, all the pages are pre-rendered into static HTML files during a build process. When a user requests a page, the pre-built file is served directly, often from a Content Delivery Network (CDN).</p>
+<p>This approach perfectly matches our conditions:</p>
+<ul>
+<li><strong>Fast:</strong> Serving static pages is incredibly fast since there's no on-demand processing.</li>
+<li><strong>Secure:</strong> With no server-side processing on request, the attack surface is significantly reduced compared to traditional technologies.</li>
+<li><strong>Cost-Effective:</strong> Static sites can be hosted for free on platforms like GitHub Pages, GitLab Pages, and Netlify.</li>
+<li><strong>Scalable:</strong> Static assets are easy to scale. You can distribute them across a global CDN to ensure fast loading times for users anywhere in the world.</li>
+<li><strong>Simple Content Creation:</strong> SSGs typically use Markdown as an input for creating new content, which satisfies our requirement of not needing to write HTML.</li>
+</ul>
+<h3 id="why-zola">Why Zola?</h3>
+<p>After deciding to use a static site generator, we had to choose which one. While there are many popular options like Hugo, Gatsby, and VuePress, we decided to go with <strong>Zola</strong> for a few key reasons:</p>
+<ul>
+<li><strong>Simplicity:</strong> Zola is a single executable file. There's no complex installation process; you just download the binary and run it.</li>
+<li><strong>Built-in Features:</strong> It comes with powerful features out-of-the-box, such as syntax highlighting, shortcodes, and internal link management.</li>
+<li><strong>Familiar Templating:</strong> The main reason we chose Zola is its templating language, Tera, which is very similar to Jinja2 (used in Django and other Python applications). Since our team is familiar with Python and Jinja, it will be much easier for us to develop and customize the website.</li>
+</ul>
+<h3 id="what-s-next">What's Next?</h3>
+<p>In our next post, we'll walk you through creating the website using a pre-built Zola theme. We'll show you how to add your own content using Markdown, customize the theme to your liking, and build your own site. If you follow along, you'll be able to create your own fast, modern, and easily updatable website.</p>
+<p>Thank you for reading!</p>
+
+    </div>
+    
+    <footer class="post-footer">
+        
+        
+    </footer>
+</article>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-gray-200 dark:border-gray-700 text-center py-6 text-sm text-gray-500 dark:text-gray-300 bg-gray-100 dark:bg-gray-900">
+    <p>&copy; 2025 RustyBlog</p>
+  </footer>
+</body>
+</html>

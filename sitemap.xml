@@ -11,6 +11,10 @@
         <lastmod>2025-09-30</lastmod>
     </url>
     <url>
+        <loc>https://yoloinfinity55.github.io/rustblog/blog/choosing-a-static-site-generator/</loc>
+        <lastmod>2025-09-30</lastmod>
+    </url>
+    <url>
         <loc>https://yoloinfinity55.github.io/rustblog/blog/directory-structure/</loc>
         <lastmod>2025-09-30</lastmod>
     </url>
@@ -71,6 +75,12 @@
         <loc>https://yoloinfinity55.github.io/rustblog/tags/blogging/page/1/</loc>
     </url>
     <url>
+        <loc>https://yoloinfinity55.github.io/rustblog/tags/jamstack/</loc>
+    </url>
+    <url>
+        <loc>https://yoloinfinity55.github.io/rustblog/tags/jamstack/page/1/</loc>
+    </url>
+    <url>
         <loc>https://yoloinfinity55.github.io/rustblog/tags/personal/</loc>
     </url>
     <url>
@@ -123,6 +133,12 @@
     </url>
     <url>
         <loc>https://yoloinfinity55.github.io/rustblog/tags/updates/page/1/</loc>
+    </url>
+    <url>
+        <loc>https://yoloinfinity55.github.io/rustblog/tags/web-development/</loc>
+    </url>
+    <url>
+        <loc>https://yoloinfinity55.github.io/rustblog/tags/web-development/page/1/</loc>
     </url>
     <url>
         <loc>https://yoloinfinity55.github.io/rustblog/tags/zola/</loc>
