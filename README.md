@@ -544,6 +544,245 @@ Specification: RustBlog - Minimalist Markdown Blog with Zola and Tailwind CSS (U
    33 -   **Dark Mode**: Ensure Alpine.js CDN is accessible, check localStorage in browser dev tools.
    34 -   **Front Matter Script**: Ensure `blog_content_directory` is correct in `add_frontmatter.py`.
    35 
+   36 ## 13. txt_converter Tool
+   37 This project includes a custom Rust tool, `txt_converter`, designed to streamline the process of converting plain text files (`.txt`) into Zola-compatible Markdown posts.
+   38 
+   39 ### Features:
+   40 -   **Automated Conversion**: Converts `.txt` files to `.md` format.
+   41 -   **Zola Front Matter**: Automatically generates Zola-compatible front matter, including title, date, tags, and categories.
+   42 -   **Interactive Input**: Prompts the user for the input `.txt` file path, post title, tags, and categories.
+   43 -   **Error Handling**: Includes basic validation for file existence and type, and provides informative error messages.
+   44 -   **Directory Management**: Ensures the target blog directory (`content/blog/`) exists before writing the new file.
+   45 
+   46 ### Usage:
+   47 1.  **Build the converter**:
+   48     ```bash
+   49     cd txt_converter
+   50     cargo build --release
+   51     ```
+   52 2.  **Run the converter**:
+   53     ```bash
+   54     # From the root of the rustblog project
+   55     ./txt_converter/target/release/txt_converter 
+   56     ```
+   57 3.  **Follow the prompts**: The tool will ask for the path to your `.txt` file, the desired title for the post, and comma-separated tags and categories.
+   58 
+   59 ### Example Workflow:
+   60 ```bash
+   61 # Assuming you have a file named 'my_notes.txt' in the project root
+   62 ./txt_converter/target/release/txt_converter 
+   63 # Then follow the prompts...
+   64 ```
+   65 
+   66 ## 14. Deliverables
+   36 ## 13. txt_converter Tool
+   37 This project includes a custom Rust tool, `txt_converter`, designed to streamline the process of converting plain text files (`.txt`) into Zola-compatible Markdown posts.
+   38 
+   39 ### Features:
+   40 -   **Automated Conversion**: Converts `.txt` files to `.md` format.
+   41 -   **Zola Front Matter**: Automatically generates Zola-compatible front matter, including title, date, tags, and categories.
+   42 -   **Interactive Input**: Prompts the user for the input `.txt` file path, post title, tags, and categories.
+   43 -   **Error Handling**: Includes basic validation for file existence and type, and provides informative error messages.
+   44 -   **Directory Management**: Ensures the target blog directory (`content/blog/`) exists before writing the new file.
+   45 
+   46 ### Usage:
+   47 1.  **Build the converter**:
+   48     ```bash
+   49     cd txt_converter
+   50     cargo build --release
+   51     ```
+   52 2.  **Run the converter**:
+   53     ```bash
+   54     # From the root of the rustblog project
+   55     ./txt_converter/target/release/txt_converter 
+   56     ```
+   57 3.  **Follow the prompts**: The tool will ask for the path to your `.txt` file, the desired title for the post, and comma-separated tags and categories.
+   58 
+   59 ### Example Workflow:
+   60 ```bash
+   61 # Assuming you have a file named 'my_notes.txt' in the project root
+   62 ./txt_converter/target/release/txt_converter 
+   63 # Then follow the prompts...
+   64 ```
+   65 
+   66 ## 14. Deliverables
+   36 ## 13. txt_converter Tool
+   37 This project includes a custom Rust tool, `txt_converter`, designed to streamline the process of converting plain text files (`.txt`) into Zola-compatible Markdown posts.
+   38 
+   39 ### Features:
+   40 -   **Automated Conversion**: Converts `.txt` files to `.md` format.
+   41 -   **Zola Front Matter**: Automatically generates Zola-compatible front matter, including title, date, tags, and categories.
+   42 -   **Interactive Input**: Prompts the user for the input `.txt` file path, post title, tags, and categories.
+   43 -   **Error Handling**: Includes basic validation for file existence and type, and provides informative error messages.
+   44 -   **Directory Management**: Ensures the target blog directory (`content/blog/`) exists before writing the new file.
+   45 
+   46 ### Usage:
+   47 1.  **Build the converter**:
+   48     ```bash
+   49     cd txt_converter
+   50     cargo build --release
+   51     ```
+   52 2.  **Run the converter**:
+   53     ```bash
+   54     # From the root of the rustblog project
+   55     ./txt_converter/target/release/txt_converter 
+   56     ```
+   57 3.  **Follow the prompts**: The tool will ask for the path to your `.txt` file, the desired title for the post, and comma-separated tags and categories.
+   58 
+   59 ### Example Workflow:
+   60 ```bash
+   61 # Assuming you have a file named 'my_notes.txt' in the project root
+   62 ./txt_converter/target/release/txt_converter 
+   63 # Then follow the prompts...
+   64 ```
+   35 
+   36 ## 13. txt_converter Tool
+   37 This project includes a custom Rust tool, `txt_converter`, designed to streamline the process of converting plain text files (`.txt`) into Zola-compatible Markdown posts.
+   38 
+   39 ### Features:
+   40 -   **Automated Conversion**: Converts `.txt` files to `.md` format.
+   41 -   **Zola Front Matter**: Automatically generates Zola-compatible front matter, including title, date, tags, and categories.
+   42 -   **Interactive Input**: Prompts the user for the input `.txt` file path, post title, tags, and categories.
+   43 -   **Error Handling**: Includes basic validation for file existence and type, and provides informative error messages.
+   44 -   **Directory Management**: Ensures the target blog directory (`content/blog/`) exists before writing the new file.
+   45 
+   46 ### Usage:
+   47 1.  **Build the converter**:
+   48     ```bash
+   49     cd txt_converter
+   50     cargo build --release
+   51     ```
+   52 2.  **Run the converter**:
+   53     ```bash
+   54     # From the root of the rustblog project
+   55     ./txt_converter/target/release/txt_converter 
+   56     ```
+   57 3.  **Follow the prompts**: The tool will ask for the path to your `.txt` file, the desired title for the post, and comma-separated tags and categories.
+   58 
+   59 ### Example Workflow:
+   60 ```bash
+   61 # Assuming you have a file named 'my_notes.txt' in the project root
+   62 ./txt_converter/target/release/txt_converter 
+   63 # Then follow the prompts...
+   64 ```
+   65 
+   66 ## 13. Deliverables
+   67 -   Static blog hosted at `https://yoloinfinity55.github.io/rustblog`.
+   68 -   GitHub repository: `rustblog`.
+   36 ## 13. txt_converter Tool
+   37 This project includes a custom Rust tool, `txt_converter`, designed to streamline the process of converting plain text files (`.txt`) into Zola-compatible Markdown posts.
+   38 
+   39 ### Features:
+   40 -   **Automated Conversion**: Converts `.txt` files to `.md` format.
+   41 -   **Zola Front Matter**: Automatically generates Zola-compatible front matter, including title, date, tags, and categories.
+   42 -   **Interactive Input**: Prompts the user for the input `.txt` file path, post title, tags, and categories.
+   43 -   **Error Handling**: Includes basic validation for file existence and type, and provides informative error messages.
+   44 -   **Directory Management**: Ensures the target blog directory (`content/blog/`) exists before writing the new file.
+   45 
+   46 ### Usage:
+   47 1.  **Build the converter**:
+   48     ```bash
+   49     cd txt_converter
+   50     cargo build --release
+   51     ```
+   52 2.  **Run the converter**:
+   53     ```bash
+   54     # From the root of the rustblog project
+   55     ./txt_converter/target/release/txt_converter 
+   56     ```
+   57 3.  **Follow the prompts**: The tool will ask for the path to your `.txt` file, the desired title for the post, and comma-separated tags and categories.
+   58 
+   59 ### Example Workflow:
+   60 ```bash
+   61 # Assuming you have a file named 'my_notes.txt' in the project root
+   62 ./txt_converter/target/release/txt_converter 
+   63 # Then follow the prompts...
+   64 ```
+   65 
+   66 ## 14. Deliverables
+   67 -   Static blog hosted at `https://yoloinfinity55.github.io/rustblog`.
+   68 -   GitHub repository: `rustblog`.
+   36 ## 13. Deliverables
+   37 -   Static blog hosted at `https://yoloinfinity55.github.io/rustblog`.
+   38 -   GitHub repository: `rustblog`.
+   39 -   Minimalist, responsive blog with sample content, tags, and categories.
+   40 -   Automated deployment pipeline via GitHub Actions.
+   41 -   Custom Python script for automated front matter generation.
+   42 
+   43 ## 14. Timeline
+   44 -   **Day 1**: Setup dependencies, initialize project, create templates and content.
+   45 -   **Day 2**: Test locally, set up Git and GitHub Actions. Implement automated front matter script.
+   46 -   **Day 3**: Deploy to GitHub Pages, validate production site.
+   47 
+   48 ## 15. Resources
+   49 -   [Zola Docs](https://www.getzola.org/documentation/)
+   50 -   [Tailwind CSS Docs](https://tailwindcss.com/docs)
+   51 -   [GitHub Pages](https://docs.github.com/en/pages)
+   52 -   [Alpine.js Docs](https://alpinejs.dev/)
+   53 -   [Inter Font](https://rsms.me/inter/)
+   54 
+   55 ## 16. Key Updates from Previous Specification
+   56 -   **Folder Structure**: Used `zola init .` for a flat structure. Added `add_frontmatter.py` script. Noted 
+      `theme.css` is present but empty.
+   57 -   **Minimalist Design**: Implemented a monochromatic palette, `Inter` font, increased whitespace, removed 
+      shadows and decorative buttons, and used subtle dividers. **Colors are now managed via CSS variables for 
+      enhanced flexibility.**
+   58 -   **Paths**: Ensured `tailwind.config.js`, `package.json`, and `deploy.yml` use correct paths (`static/`).
+   59 -   **Templates**:
+   60     -   Enhanced `base.html` with improved dark mode initialization, more polished header styling (sticky, 
+      transparent, backdrop-blur), and a more interactive mobile menu with animated SVG paths and Alpine.js 
+      transitions.
+   61     -   `index.html` was significantly updated to dynamically fetch and display the latest blog posts in a 
+      grid layout, making it a dynamic blog feed rather than static content.
+   62     -   `content/blog/_index.md` now references `template = "blog.html"` and `page_template = "blog-page.html"
+      `, indicating a more refined templating strategy for blog sections.
+   63     -   `templates/blog_index.html` was renamed to `templates/blog.html`.
+   64     -   `templates/page.html` and `templates/taxonomies.html` were simplified by removing explicit dark mode 
+      classes, centralizing dark mode handling.
+   65 -   **Content**: Added `second-post.md`, `third-post.md`, `Directory-Structure.md`, and `analysis.md` with 
+      proper code block delimiters and front matter.
+   66 -   **Configuration**: Corrected `config.toml` taxonomies syntax and `base_url` for local development. 
+      `tailwind.config.js` now uses CSS variables for color definitions and the updated Tailwind CSS v3 typography 
+      configuration.
+   67 -   **Automated Front Matter**: A new Python script (`add_frontmatter.py`) was introduced to automate the 
+      generation of default front matter for new Markdown files, including title extraction, date stamping, and 
+      rule-based tag/category detection from content.
+   68 
+   69 ---
+   35 
+   36 ## 13. txt_converter Tool
+   37 This project includes a custom Rust tool, `txt_converter`, designed to streamline the process of converting plain text files (`.txt`) into Zola-compatible Markdown posts.
+   38 
+   39 ### Features:
+   40 -   **Automated Conversion**: Converts `.txt` files to `.md` format.
+   41 -   **Zola Front Matter**: Automatically generates Zola-compatible front matter, including title, date, tags, and categories.
+   42 -   **Interactive Input**: Prompts the user for the input `.txt` file path, post title, tags, and categories.
+   43 -   **Error Handling**: Includes basic validation for file existence and type, and provides informative error messages.
+   44 -   **Directory Management**: Ensures the target blog directory (`content/blog/`) exists before writing the new file.
+   45 
+   46 ### Usage:
+   47 1.  **Build the converter**:
+   48     ```bash
+   49     cd txt_converter
+   50     cargo build --release
+   51     ```
+   52 2.  **Run the converter**:
+   53     ```bash
+   54     # From the root of the rustblog project
+   55     ./txt_converter/target/release/txt_converter 
+   56     ```
+   57 3.  **Follow the prompts**: The tool will ask for the path to your `.txt` file, the desired title for the post, and comma-separated tags and categories.
+   58 
+   59 ### Example Workflow:
+   60 ```bash
+   61 # Assuming you have a file named 'my_notes.txt' in the project root
+   62 ./txt_converter/target/release/txt_converter 
+   63 # Then follow the prompts...
+   64 ```
+   65 
+   66 ## 14. Deliverables
+   67 -   Static blog hosted at `https://yoloinfinity55.github.io/rustblog`.
+   68 -   GitHub repository: `rustblog`.
    36 ## 13. Deliverables
    37 -   Static blog hosted at `https://yoloinfinity55.github.io/rustblog`.
    38 -   GitHub repository: `rustblog`.
