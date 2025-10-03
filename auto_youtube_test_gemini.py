@@ -6,9 +6,9 @@ import google.generativeai as genai  # Gemini lib
 from datetime import datetime
 
 # Config - Use your existing Gemini key
-GEMINI_API_KEY = os.getenv('GEMINI_API_KEY') or "your_gemini_key_here"  # Export: export GEMINI_API_KEY='AIza...'
+GEMINI_API_KEY = os.getenv('GEMINI_API_KEY') # or "your_gemini_key_here"  # Export: export GEMINI_API_KEY='AIza...'
 genai.configure(api_key=GEMINI_API_KEY)
-model = genai.GenerativeModel('gemini-1.5-flash')
+model = genai.GenerativeModel('gemini-2.5-flash')
 
 PROJECT_DIR = '.'  # RustBlog root
 
