@@ -1,0 +1,27 @@
+name: Deploy RustBlog
+
+on:
+  push:
+    branches:
+      - main # Or your default branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Zola
+        uses: taiki-e/install-action@v2
+        with:
+          tool: zola
+
+      - name: Build static site
+        run: zola build
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: zola-site-build
+          path: ./public
