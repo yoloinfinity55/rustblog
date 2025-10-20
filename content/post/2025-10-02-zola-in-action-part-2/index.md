@@ -1,17 +1,13 @@
 +++
-         title = "ZOLA IN ACTION PART 2"
-         date = 2025-10-01
-         [taxonomies]
-         tags = ["converted"]
-         categories = ["blog"]
-         +++
-
-+++
 title = "Zola in Action: Setting Up Your First Project and Theme - Revised"
-date = 2025-10-01
+date = 2025-10-02
+description = "Zola in Action: Setting Up Your First Project and Theme - Revised"
+
+[extra]
+promo_image = ""
+
 [taxonomies]
 tags = ["zola", "web-development", "themes", "tutorial"]
-categories = ["blog"]
 +++
 
 # Zola in Action: Setting Up Your First Project and Theme - Revised

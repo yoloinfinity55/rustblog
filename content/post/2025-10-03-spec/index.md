@@ -1,9 +1,13 @@
 +++
 title = "Spec"
 date = 2025-10-03
+description = "Project specification for RustBlog - Minimalist Markdown Blog with Zola and Tailwind CSS"
+
+[extra]
+promo_image = ""
+
 [taxonomies]
 tags = ["project", "specification", "updates"]
-categories = ["documentation"]
 +++
 
 ## 1. Project Overview
@@ -119,7 +123,6 @@ default_language = "en"
 
 [taxonomies]
 tags = ["tags"]
-categories = ["categories"]
 
 [markdown]
 highlight_code = true

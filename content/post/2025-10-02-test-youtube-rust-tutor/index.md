@@ -1,10 +1,13 @@
 +++
 title = "Test Youtube Rust Tutor"
 date = 2025-10-02
-template = "page.html"
+description = "Rust Tutorial Test: Your First Steps into High-Performance Programming"
+
+[extra]
+promo_image = "/thumbnails/youtube-0RKpf3rK57I.jpg"
+
 [taxonomies]
 tags = ["Rust", "Programming", "Tutorial"]
-categories = []
 +++
 
 ```markdown

@@ -1,0 +1,13 @@
+title = "RustyBlog"
+base_url = "https://yoloinfinity55.github.io/rustblog"
+description = "A minimalist blog with Zola and Tailwind CSS"
+default_language = "en"
+theme = "zola-devin"
+
+taxonomies = [
+  {name = "tags", paginate_by = 5},
+  {name = "categories", paginate_by = 5},
+]
+
+[markdown]
+highlight_code = true

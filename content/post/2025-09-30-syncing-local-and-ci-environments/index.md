@@ -3,7 +3,6 @@ title = "Syncing Local and CI Environments"
 date = 2025-09-30
 [taxonomies]
 tags = ["devops", "ci-cd", "github-actions"]
-categories = ["technical"]
 +++
 
 # Keeping Local Development and GitHub Actions in Sync

@@ -1,10 +1,9 @@
 +++
 title = "Analysis and Improvement Plan for RustBlog"
-template = "index.html"
+template = "page.html"
 date = 2025-10-02
 [taxonomies]
 tags = ["tech", "rust"]
-categories = ["blog"]
 +++
 
 The project has been researched, an improvement plan was recommended, and the next steps have been outlined and executed.

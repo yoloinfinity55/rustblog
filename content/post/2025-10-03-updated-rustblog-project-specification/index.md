@@ -1,9 +1,13 @@
 +++
 title = "Updated RustBlog Project Specification"
 date = 2025-10-03
+description = "Specification: RustBlog - Minimalist Markdown Blog with Zola and Tailwind CSS (Updated)"
+
+[extra]
+promo_image = ""
+
 [taxonomies]
 tags = ["project", "specification", "updates"]
-categories = ["documentation"]
 +++
 ## Specification: RustBlog - Minimalist Markdown Blog with Zola and Tailwind CSS (Updated)
 
@@ -547,4 +551,3 @@ touch .gitignore postcss.config.js
    - **Templates**: Enhanced with minimalist styling, including a simplified navbar, emoji-based dark mode toggle, and flat post listings. Initialized `menuOpen` variable in Alpine.js `x-data` to prevent `ReferenceError`.
    - **Functionality**: Preserved responsive navigation, dark mode, syntax highlighting, and taxonomy pages.
    - **Content**: Added `second-post.md` and `third-post.md` for testing and demonstration.
-   

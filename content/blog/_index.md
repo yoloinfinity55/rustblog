@@ -1,6 +1,9 @@
 +++
 title = "Blog"
-sort_by = "date"
 template = "blog.html"
-page_template = "blog-page.html"
+sort_by = "date"
 +++
+
+# Blog Posts
+
+All blog posts are listed here.

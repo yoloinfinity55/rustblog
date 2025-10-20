@@ -1,12 +1,43 @@
+base_url = "/"
 title = "RustyBlog"
-base_url = "https://yoloinfinity55.github.io/rustblog"
 description = "A minimalist blog with Zola and Tailwind CSS"
 default_language = "en"
 
+# Whether to build a search index
+build_search_index = true
+
+# Feed configuration
+generate_feeds = true
+feed_filenames = ["rss.xml"]
+
+# The taxonomies to be rendered for the site
 taxonomies = [
-  {name = "tags", paginate_by = 5},
-  {name = "categories", paginate_by = 5},
+    {name = "tags"},
 ]
+
+# Theme-specific settings
+theme = "zola-devin"
+
+[search]
+search_index_format = "elasticlunr_javascript"
 
 [markdown]
 highlight_code = true
+highlight_theme = "base16-ocean-dark"
+
+[extra]
+# Blog owner information
+blog_owner_name = "Your Name"
+blog_owner_description = "A short bio about yourself"
+blog_owner_image = "/images/avatar.jpg"  # Place your avatar in the static/images directory
+
+# Social media links
+social_links = [
+    { name = "GitHub", url = "https://github.com/username" },
+    { name = "Twitter", url = "https://twitter.com/username" },
+    { name = "LinkedIn", url = "https://linkedin.com/in/username" },
+    { name = "StackOverflow", url = "https://stackoverflow.com/users/username" }
+]
+
+# Google Analytics / GTag id - Place your tag id here to enable Google Analytics
+google_analytics_gtag_id = "{your-tag-here-id}"

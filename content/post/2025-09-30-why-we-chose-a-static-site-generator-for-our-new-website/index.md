@@ -1,9 +1,13 @@
 +++
 title = "Why We Chose a Static Site Generator for Our New Website"
 date = 2025-09-30
+description = "Hello, friends! We're excited to announce that we're planning to build a new website for Integracy."
+
+[extra]
+promo_image = ""
+
 [taxonomies]
 tags = ["tech", "zola", "jamstack", "web-development"]
-categories = ["blog"]
 +++
 
 Hello, friends! We're excited to announce that we're planning to build a new website for Integracy. Before diving into development, we established a few key conditions for what we wanted to achieve.
